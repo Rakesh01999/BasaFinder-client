@@ -5,10 +5,10 @@ import { getAllListings } from "@/services/Listings";
 import { TRentalListing } from "@/types";
 import Link from "next/link";
 
-const Listings = async () => {
+const RentalListings = async () => {
   const { data: listings } = await getAllListings();
   // console.log('f-Listings :', listings);
-  
+
   return (
     <NMContainer className="my-20">
       <div className="flex items-center justify-between">
@@ -20,23 +20,25 @@ const Listings = async () => {
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
-        {listings?.slice(0, 6).map((listing: TRentalListing & { _id: string }, idx: number) => (
-          <ListingCard
-            key={idx}
-            listing={{
-              id: listing._id, // ✅ Mapping _id to id
-              location: listing.location,
-              rentAmount: listing.rentAmount,
-              bedrooms: listing.bedrooms,
-              amenities: listing.amenities,
-              description: listing.description,
-              images: listing.images,
-            }}
-          />
-        ))}
+        {listings
+          ?.slice(0, 6)
+          .map((listing: TRentalListing & { _id: string }, idx: number) => (
+            <ListingCard
+              key={idx}
+              listing={{
+                id: listing._id, // ✅ Mapping _id to id
+                location: listing.location,
+                rentAmount: listing.rentAmount,
+                bedrooms: listing.bedrooms,
+                amenities: listing.amenities,
+                description: listing.description,
+                images: listing.images,
+              }}
+            />
+          ))}
       </div>
     </NMContainer>
   );
 };
 
-export default Listings;
+export default RentalListings;
