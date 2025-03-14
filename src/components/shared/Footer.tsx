@@ -25,13 +25,13 @@ const Footer = () => {
         <div className="flex flex-col items-center mb-6">
           <div className="flex items-center space-x-2">
             <h1 className="text-2xl font-black flex items-center">
-            <Image src={logo} alt="BasaFinder Logo" width={70} height={50} />
-            BasaFinder
+              <Image src={logo} alt="BasaFinder Logo" width={70} height={50} />
+              BasaFinder
             </h1>
           </div>
           <p className="text-gray-600 mt-3 w-1/2 text-xs leading-6">
-            Save big this Black Friday with unbeatable deals on tech, home
-            essentials, fashion, and more! Limited stock.
+            Connecting landlords and tenants seamlessly. Discover, rent, and
+            manage properties with ease. Your ideal rental journey starts here.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ const Footer = () => {
         <ul className="flex justify-center space-x-6 text-sm text-gray-800 font-medium my-4">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="hover:text-purple-600">
+              <Link href={link.href} className="hover:text-blue-500">
                 {link.label}
               </Link>
             </li>
@@ -51,7 +51,7 @@ const Footer = () => {
             <Link
               href={href}
               key={index}
-              className="text-gray-600 hover:text-purple-600"
+              className="text-gray-600 hover:text-blue-500"
             >
               <Icon className="w-5 h-5" />
             </Link>

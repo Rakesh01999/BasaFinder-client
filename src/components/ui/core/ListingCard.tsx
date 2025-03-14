@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 // import { Heart } from "lucide-react";
 
 interface ListingCardProps {
@@ -19,8 +20,11 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
     <div className="border rounded-3xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300">
       <div className="relative w-full h-56">
         <Image
-        src={listing.images[0].replace('http://', 'https://') || "/placeholder.jpg"}
-        // src="https://res.cloudinary.com/dd3w1s9gq/image/upload/v1741706390/phmc6upqdltab6ncwwiv.jpg" 
+          src={
+            listing.images[0].replace("http://", "https://") ||
+            "/placeholder.jpg"
+          }
+          // src="https://res.cloudinary.com/dd3w1s9gq/image/upload/v1741706390/phmc6upqdltab6ncwwiv.jpg"
 
           alt="Listing Image"
           layout="fill"
@@ -32,11 +36,15 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
       </div>
 
       <div className="p-5">
-        <h3 className="text-xl font-semibold text-gray-800">{listing.location}</h3>
+        <h3 className="text-xl font-semibold text-gray-800">
+          {listing.location}
+        </h3>
         <p className="text-gray-500 text-sm mb-3">{listing.description}</p>
 
         <div className="flex justify-between items-center text-gray-600 mb-4">
-          <span className="text-lg font-bold text-primary">৳{listing.rentAmount}</span>
+          <span className="text-lg font-bold text-primary">
+            ৳{listing.rentAmount}
+          </span>
           <span className="text-sm">{listing.bedrooms} Bedrooms</span>
         </div>
 
@@ -49,12 +57,16 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
               {amenity}
             </span>
           ))}
-          {listing.amenities.length > 3 && <span className="text-xs">+ more</span>}
+          {listing.amenities.length > 3 && (
+            <span className="text-xs">+ more</span>
+          )}
         </div>
-
-        <Button className="w-full bg-gradient-to-r from-blue-700 to-cyan-500 text-white rounded-full hover:opacity-90">
-          View Details
-        </Button>
+        {/* <Link href='listingId'> */}
+        <Link href={`/listings/${listing?.id}`} passHref>
+          <Button className="w-full bg-gradient-to-r from-blue-700 to-cyan-500 text-white rounded-full hover:opacity-90">
+            View Details
+          </Button>
+        </Link>
       </div>
     </div>
   );
