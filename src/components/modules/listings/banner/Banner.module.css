@@ -1,6 +1,7 @@
 .banner {
   /* background: url("../../../../assets/product-banner.png"); */
-  background: url("../../../../assets/ListingBanner.jpg");
+  /* background: url("../../../../assets/ListingBanner.jpg"); */
+  background: url("../../../../assets/Details.jpg");
   height: 250px;
   background-size: cover;
   background-position: center;

@@ -6,7 +6,7 @@ import NMContainer from "@/components/ui/core/NMContainer";
 import { getSingleProduct } from "@/services/Product";
 import { getSingleListing } from "@/services/Listings";
 
-const ProductDetailsPage = async ({
+const ListingDetailsPage = async ({
   params,
 }: {
   params: Promise<{ listingId: string }>;
@@ -19,8 +19,10 @@ const ProductDetailsPage = async ({
   return (
     <NMContainer>
       <ListingBanner
-        title="Product Details"
-        path="Home - Products - Product Details"
+        // title="Listing Details"
+        // path="Home - Listings - Listing Details"
+        title=""
+        path=""
       />
       {/* <ProductDetails product={product} /> */}
       <ListingDetails listing={listing} />
@@ -28,4 +30,4 @@ const ProductDetailsPage = async ({
   );
 };
 
-export default ProductDetailsPage;
+export default ListingDetailsPage;

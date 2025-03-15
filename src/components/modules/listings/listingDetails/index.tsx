@@ -9,7 +9,7 @@ const listingDetails = ({ listing }: { listing: TRentalListing }) => {
       {/* Listing Images */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Image
-        src={
+          src={
             listing.images[0].replace("http://", "https://") ||
             "/placeholder.jpg"
           }
@@ -31,8 +31,8 @@ const listingDetails = ({ listing }: { listing: TRentalListing }) => {
           {listing.images.slice(1, 5).map((image, idx) => (
             <Image
               key={idx}
-            //   src={image}
-            src={
+              //   src={image}
+              src={
                 listing.images[0].replace("http://", "https://") ||
                 "/placeholder.jpg"
               }
