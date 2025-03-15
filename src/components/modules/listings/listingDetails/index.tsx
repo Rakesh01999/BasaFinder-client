@@ -18,20 +18,10 @@ const listingDetails = ({ listing }: { listing: TRentalListing }) => {
           height={400}
           className="rounded-xl w-full h-80 object-cover"
         />
-        {/* <Image
-          src={
-            listing.images[0].replace("http://", "https://") ||
-            "/placeholder.jpg"
-          }
-          alt="Listing Image"
-          layout="fill"
-          objectFit="cover"
-        /> */}
         <div className="grid grid-cols-2 gap-4">
           {listing.images.slice(1, 5).map((image, idx) => (
             <Image
               key={idx}
-              //   src={image}
               src={
                 listing.images[0].replace("http://", "https://") ||
                 "/placeholder.jpg"
