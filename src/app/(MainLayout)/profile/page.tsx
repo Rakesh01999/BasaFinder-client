@@ -74,7 +74,7 @@ const ProfilePage = () => {
         <Button variant="outline" className="rounded-full px-6 py-2 hover:bg-blue-500 hover:text-white transition-all">
           Edit Profile
         </Button>
-        <Button className="bg-red-500 text-white rounded-full px-6 py-2 hover:bg-red-600 transition-all">
+        <Button className="bg-red-500 text-white rounded-full px-6 py-2 hover:bg-blue-600 transition-all">
           Change Password
         </Button>
       </div>
