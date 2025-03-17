@@ -70,11 +70,12 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="mt-8 flex justify-center md:justify-end gap-4">
+      {/* <div className="mt-8 flex justify-center md:justify-end gap-4"> */}
+      <div className="mt-8 flex flex-col md:flex-row md:justify-end gap-4">
         <Button variant="outline" className="rounded-full px-6 py-2 hover:bg-blue-500 hover:text-white transition-all">
           Update Profile
         </Button>
-        <Button className="bg-red-500 text-white rounded-full px-6 py-2 hover:bg-blue-600 transition-all">
+        <Button className="text-white rounded-full px-6 py-2 hover:bg-blue-600 transition-all">
           Change Password
         </Button>
       </div>
