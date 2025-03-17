@@ -27,34 +27,79 @@ import Link from "next/link";
 import Logo from "@/assets/svgs/Logo";
 
 const data = {
+  // navMain: [
+  //   {
+  //     title: "Dashboard",
+  //     url: "/user/dashboard",
+  //     icon: SquareTerminal,
+  //     isActive: true,
+  //   },
+  //   {
+  //     title: "Shop",
+  //     url: "/user/shop/products",
+  //     icon: Bot,
+  //     items: [
+  //       {
+  //         title: "Manage Products",
+  //         url: "/user/shop/products",
+  //       },
+  //       {
+  //         title: "Manage Categories",
+  //         url: "/user/shop/category",
+  //       },
+  //       {
+  //         title: "Manage Brands",
+  //         url: "/user/shop/brand",
+  //       },
+  //       {
+  //         title: "Manage Coupon",
+  //         url: "/user/shop/manage-coupon",
+  //       },
+  //     ],
+  //   },
+
+  //   {
+  //     title: "Settings",
+  //     url: "#",
+  //     icon: Settings,
+  //     items: [
+  //       {
+  //         title: "Profile",
+  //         url: "/profile",
+  //       },
+  //     ],
+  //   },
+  // ],
   navMain: [
     {
       title: "Dashboard",
-      url: "/user/dashboard",
+      url: "/tenant/dashboard",
       icon: SquareTerminal,
       isActive: true,
     },
     {
-      title: "Shop",
-      url: "/user/shop/products",
+      title: "Manage Rental Requests",
+      url: "/tenant/my-profile",
       icon: Bot,
       items: [
         {
-          title: "Manage Products",
-          url: "/user/shop/products",
+          title: "View Rental Request",
+          url: "/tenant/rental-requests/view-requests",
+          // url: "/rental-requests/view-requests",
         },
         {
-          title: "Manage Categories",
-          url: "/user/shop/category",
+          title: "Payment History",
+          url: "/tenant/rental-requests/payment-history",
+          // url: "/rental-requests/payment-history",
         },
-        {
-          title: "Manage Brands",
-          url: "/user/shop/brand",
-        },
-        {
-          title: "Manage Coupon",
-          url: "/user/shop/manage-coupon",
-        },
+        // {
+        //   title: "Manage Brands",
+        //   url: "/user/shop/brand",
+        // },
+        // {
+        //   title: "Manage Coupon",
+        //   url: "/user/shop/manage-coupon",
+        // },
       ],
     },
 
@@ -113,7 +158,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Logo />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <h2 className="font-bold text-xl">NextMart</h2>
+                  {/* <h2 className="font-bold text-xl">NextMart</h2> */}
+                  <h2 className="font-bold text-xl">Basa Finder</h2>
                 </div>
               </Link>
             </SidebarMenuButton>

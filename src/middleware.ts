@@ -48,5 +48,8 @@ export const config = {
     "/admin/:page",
     "/user",
     "/user/:page",
+
+    "/tenant",
+    "/tenant/:page",
   ],
 };
