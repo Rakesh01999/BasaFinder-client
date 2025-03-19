@@ -10,8 +10,13 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Link from "next/link";
+import { useUser } from "@/context/UserContext";
 
 const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
+  const { user, setIsLoading } = useUser();
+  // console.log('listing:',listing);
+  
   return (
     <Card className="container mx-auto my-10 p-6 bg-white rounded-2xl shadow-md">
       {/* Swiper for Listing Images */}
@@ -59,8 +64,26 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex gap-6 mt-6">
-          <Button className="rounded-full px-6 py-2">Request Rent</Button>
+        <div className="flex flex-col md:flex-row gap-6 mt-6">
+          {/* <Link href="/rental-house-request">
+            <Button className="rounded-full px-6 py-2">Request Rent</Button>
+          </Link> */}
+          {user?.role === "tenant" && (
+            <Link 
+            href={{
+              pathname: "/rental-house-request",
+              query: {
+                listingId: listing._id,
+                location: listing.location,
+                rentAmount: listing.rentAmount,
+                landlordId: listing.landlordId,
+                bedrooms:listing.bedrooms,
+              },
+            }}
+            >
+              <Button className="rounded-full px-6 py-2">Request Rent</Button>
+            </Link>
+          )}
           <Button variant="outline" className="rounded-full px-6 py-2">
             Contact Landlord
           </Button>
