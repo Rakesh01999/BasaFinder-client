@@ -84,6 +84,7 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
               <Button className="rounded-full px-6 py-2">Request Rent</Button>
             </Link>
           )}
+          {/* --------- Show Moldal */}
           <Button variant="outline" className="rounded-full px-6 py-2">
             Contact Landlord
           </Button>
