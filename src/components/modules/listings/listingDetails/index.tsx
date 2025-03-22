@@ -85,6 +85,7 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
             </Link>
           )}
           {/* --------- Show Moldal conditionally (tenant only) ----------*/}
+          
           <Button variant="outline" className="rounded-full px-6 py-2">
             Contact Landlord
           </Button>
