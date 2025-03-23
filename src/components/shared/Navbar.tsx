@@ -122,7 +122,7 @@ export default function Navbar() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href={`/${user.role}/dashboard`} className="flex w-full cursor-pointer">
+                  <Link href={`/${user.role}s/dashboard`} className="flex w-full cursor-pointer">
                   <LayoutDashboardIcon className="mr-2 h-4 w-4" />
                     Dashboard
                   </Link>

@@ -73,7 +73,6 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      // url: "/tenant/dashboard",
       url: "/tenants/dashboard",
       icon: SquareTerminal,
       isActive: true,
@@ -92,9 +91,8 @@ const data = {
         },
         {
           title: "Payment History",
-          // url: "/tenant/rental-requests/payment-history",
-          url: "/tenants/rental-requests/payment-history",
-          // url: "/rental-requests/payment-history",
+          // url: "/tenants/rental-requests/payment-history",
+          url: "/payment/my-payments",
         },
         // {
         //   title: "Manage Brands",
