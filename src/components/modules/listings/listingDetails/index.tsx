@@ -10,13 +10,21 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Link from "next/link";
 import { useUser } from "@/context/UserContext";
+import { useRentalRequest } from "@/context/RentalRequestContext";
+import { useRouter } from "next/navigation";
 
 const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
-  const { user, setIsLoading } = useUser();
-  // console.log('listing:',listing);
-  
+  const { user } = useUser();
+  const { setListing } = useRentalRequest();
+  const router = useRouter();
+
+  const handleRequestRent = () => {
+    setListing(listing); // ✅ Store listing data in context
+    console.log('listing:',listing);
+    router.push("/tenants/create"); // ✅ Navigate to the request page without query params
+  };
+
   return (
     <Card className="container mx-auto my-10 p-6 bg-white rounded-2xl shadow-md">
       {/* Swiper for Listing Images */}
@@ -24,7 +32,7 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
         modules={[Navigation, Pagination, Autoplay]}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto-slide every 3 sec
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         className="w-full h-80 rounded-xl"
       >
         {listing.images.map((image, idx) => (
@@ -65,27 +73,11 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col md:flex-row gap-6 mt-6">
-          {/* <Link href="/rental-house-request">
-            <Button className="rounded-full px-6 py-2">Request Rent</Button>
-          </Link> */}
           {user?.role === "tenant" && (
-            <Link 
-            href={{
-              pathname: "/rental-house-request",
-              query: {
-                listingId: listing._id,
-                location: listing.location,
-                rentAmount: listing.rentAmount,
-                landlordId: listing.landlordId,
-                bedrooms:listing.bedrooms,
-              },
-            }}
-            >
-              <Button className="rounded-full px-6 py-2">Request Rent</Button>
-            </Link>
+            <Button className="rounded-full px-6 py-2" onClick={handleRequestRent}>
+              Request Rent
+            </Button>
           )}
-          {/* --------- Show Moldal conditionally (tenant only) ----------*/}
-          
           <Button variant="outline" className="rounded-full px-6 py-2">
             Contact Landlord
           </Button>

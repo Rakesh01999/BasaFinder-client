@@ -6,43 +6,33 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useUser } from "@/context/UserContext";
+import { useRentalRequest } from "@/context/RentalRequestContext";
 import { toast } from "sonner";
 import { getSingleUser } from "@/services/Users";
 import { createRentalRequest } from "@/services/Requests"; // Import request service
 import { IUser } from "@/types";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const RentalHouseRequest = () => {
   const { user } = useUser();
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const { listing } = useRentalRequest(); // ✅ Fetch listing data from context
 
-  const listingId = searchParams.get("listingId");
-  const location = searchParams.get("location");
-  const rentAmount = searchParams.get("rentAmount");
-  const landlordId = searchParams.get("landlordId");
-  const bedrooms = searchParams.get("bedrooms");
-
-  console.log({ listingId, location, rentAmount, landlordId, bedrooms });
-
+  // State Management
   const [userData, setUserData] = useState<IUser | null>(null);
   const [message, setMessage] = useState("");
   const [agree, setAgree] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // Fetch user data
-  const fetchUserData = async () => {
-    if (!user?.userId) return;
-    const res = await getSingleUser(user.userId);
-    if (res?.success) {
-      setUserData(res.data);
-    }
-  };
-
   useEffect(() => {
-    fetchUserData();
+    if (!user?.userId) return;
+    getSingleUser(user.userId).then((res) => {
+      if (res?.success) setUserData(res.data);
+    });
   }, [user?.userId]);
 
+  // Restrict access to non-tenants
   useEffect(() => {
     if (user?.role !== "tenant") {
       toast.error("Access denied. Only tenants can send rental requests.");
@@ -59,36 +49,47 @@ const RentalHouseRequest = () => {
       return;
     }
 
-    if (!listingId || !landlordId || !location || !rentAmount) {
-      toast.error("Invalid listing details.");
+    if (
+      !listing?._id ||
+      !listing.landlordId ||
+      !listing.location ||
+      !listing.rentAmount
+    ) {
+      toast.error("Missing listing details. Please try again.");
       return;
     }
 
     setLoading(true);
 
     const rentalRequest = {
-      requestData: {
+      rentalRequest: {
         tenantId: user?.userId,
-        rentalHouseId: listingId,
-        landlordId,
-        location,
-        rentAmount: Number(rentAmount),
-        bedrooms: Number(bedrooms),
+        rentalHouseId: listing._id,
+        landlordId: listing.landlordId,
+        location: listing.location,
+        rentAmount: Number(listing.rentAmount),
+        bedrooms: Number(listing.bedrooms),
         message,
         status: "pending",
         paymentStatus: "pending",
       },
     };
-    console.log("requestData :", rentalRequest);
-    const res = await createRentalRequest(rentalRequest);
 
-    if (res?.success) {
-      toast.success("Rental request sent successfully!");
-      setMessage("");
-      setAgree(false);
-      router.push("/tenant/dashboard"); // Redirect to tenant dashboard
-    } else {
-      toast.error(res?.message || "Something went wrong.");
+    console.log("Sending Request Data:", rentalRequest);
+
+    try {
+      const res = await createRentalRequest(rentalRequest);
+      if (res?.success) {
+        toast.success("Rental request sent successfully!");
+        setMessage("");
+        setAgree(false);
+        router.push("/tenant/dashboard"); // Redirect to dashboard
+      } else {
+        toast.error(res?.message || "Failed to send request.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Try again later.");
+      console.error("Request Error:", error);
     }
 
     setLoading(false);
@@ -96,23 +97,37 @@ const RentalHouseRequest = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md my-10">
-      <h2 className="text-2xl font-semibold mb-6">Rental House Request</h2>
+      <h2 className="text-3xl font-semibold mb-6 text-center">
+        Rental House Request
+      </h2>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* User Information (Auto-populated) */}
-        <div>
-          <label className="text-sm font-medium text-gray-700">Name</label>
-          <Input disabled value={userData?.name || ""} className="mt-2" />
-        </div>
-
-        <div>
-          <label className="text-sm font-medium text-gray-700">Email</label>
-          <Input disabled value={user?.email || ""} className="mt-2" />
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-sm font-medium text-gray-700">Name</label>
+            <Input disabled value={userData?.name || ""} className="mt-2" />
+          </div>
+          <div>
+            <label className="text-sm font-medium text-gray-700">Email</label>
+            <Input disabled value={user?.email || ""} className="mt-2" />
+          </div>
         </div>
 
         {/* Listing Details (Auto-populated) */}
-        <div>
-          <label className="text-sm font-medium text-gray-700">Location</label>
-          <Input disabled value={location || ""} className="mt-2" />
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-sm font-medium text-gray-700">
+              Location
+            </label>
+            <Input disabled value={listing?.location || ""} className="mt-2" />
+          </div>
+          <div>
+            <label className="text-sm font-medium text-gray-700">
+              Bedrooms
+            </label>
+            <Input disabled value={listing?.bedrooms || ""} className="mt-2" />
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -120,13 +135,21 @@ const RentalHouseRequest = () => {
             <label className="text-sm font-medium text-gray-700">
               Rent Amount
             </label>
-            <Input disabled value={`৳ ${rentAmount || ""}`} className="mt-2" />
+            <Input
+              disabled
+              value={`৳ ${listing?.rentAmount || ""}`}
+              className="mt-2"
+            />
           </div>
           <div>
             <label className="text-sm font-medium text-gray-700">
-              Bedrooms
+              Landlord ID
             </label>
-            <Input disabled value={bedrooms || ""} className="mt-2" />
+            <Input
+              disabled
+              value={listing?.landlordId || ""}
+              className="mt-2"
+            />
           </div>
         </div>
 
@@ -154,7 +177,11 @@ const RentalHouseRequest = () => {
         </div>
 
         {/* Submit Button */}
-        <Button type="submit" className="w-full" disabled={loading}>
+        <Button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          disabled={loading}
+        >
           {loading ? "Sending..." : "Send Request"}
         </Button>
       </form>
