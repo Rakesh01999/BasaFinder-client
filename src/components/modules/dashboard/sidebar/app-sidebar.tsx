@@ -73,23 +73,27 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/tenant/dashboard",
+      // url: "/tenant/dashboard",
+      url: "/tenants/dashboard",
       icon: SquareTerminal,
       isActive: true,
     },
     {
       title: "Manage Rental Requests",
-      url: "/tenant/my-profile",
+      // url: "/tenant/my-profile",
+      url: "/tenants/my-profile",
       icon: Bot,
       items: [
         {
           title: "View Rental Request",
-          url: "/tenant/rental-requests/view-requests",
-          // url: "/rental-requests/view-requests",
+          // url: "/tenant/rental-requests/view-requests",
+          // url: "/tenants/requests",
+          url: "/tenants/requests",
         },
         {
           title: "Payment History",
-          url: "/tenant/rental-requests/payment-history",
+          // url: "/tenant/rental-requests/payment-history",
+          url: "/tenants/rental-requests/payment-history",
           // url: "/rental-requests/payment-history",
         },
         // {

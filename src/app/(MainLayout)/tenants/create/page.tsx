@@ -83,7 +83,8 @@ const RentalHouseRequest = () => {
         toast.success("Rental request sent successfully!");
         setMessage("");
         setAgree(false);
-        router.push("/tenant/dashboard"); // Redirect to dashboard
+        // router.push("/tenant/dashboard"); // Redirect to dashboard
+        router.push("/tenants/dashboard"); // Redirect to dashboard
       } else {
         toast.error(res?.message || "Failed to send request.");
       }

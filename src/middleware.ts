@@ -51,5 +51,8 @@ export const config = {
 
     "/tenant",
     "/tenant/:page",
+
+    "/tenants",
+    "/tenants/:page",
   ],
 };

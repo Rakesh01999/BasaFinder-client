@@ -5,3 +5,4 @@ export * from "./product";
 export * from "./meta";
 
 export * from "./listings";
+export * from "./rentalRequest";

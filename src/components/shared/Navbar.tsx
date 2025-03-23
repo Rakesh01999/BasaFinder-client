@@ -57,7 +57,9 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "All Rentals", href: "/listings" },
-    ...(user ? [{ name: "Dashboard", href: `/${user.role}/dashboard` }] : []),
+
+    ...(user ? [{ name: "Dashboard", href: `/${user.role}s/dashboard` }] : []),
+
   ];
 
   return (
