@@ -123,7 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         items: [
           {
             title: "All Requests",
-            url: "/landlords/requests",
+            url: "/landlord/requests",
           },
           {
             title: "Pending Requests",

@@ -94,8 +94,10 @@ export const getLandlordRequests = async () => {
         tags: ["rentalRequests"],
       },
     });
+    const data = await res.json();
+    console.log("✅ API Response:", data); // 🔴 DEBUG LOG
 
-    return res.json();
+    return data;
   } catch (error: any) {
     console.error("Error in getLandlordRequests:", error);
     return {
