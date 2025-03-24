@@ -12,8 +12,8 @@ import {
   
   const baseQuery = fetchBaseQuery({
   
-  // baseUrl: 'http://localhost:5000/api/v1',
-  baseUrl: 'https://basa-finder-server-seven.vercel.app/api/v1',
+  baseUrl: 'http://localhost:5000/api/v1',
+  // baseUrl: 'https://basa-finder-server-seven.vercel.app/api/v1',
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
@@ -42,8 +42,8 @@ import {
       console.log('🔄 Refreshing token...');
   
   
-        // const res = await fetch('http://localhost:5000/api/v1/refresh-token', {
-        const res = await fetch('https://basa-finder-server-seven.vercel.app/api/v1/refresh-token', {
+        const res = await fetch('http://localhost:5000/api/v1/refresh-token', {
+        // const res = await fetch('https://basa-finder-server-seven.vercel.app/api/v1/refresh-token', {
         method: 'POST',
         credentials: 'include',
       });
