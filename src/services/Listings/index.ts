@@ -5,22 +5,78 @@ import { cookies } from "next/headers";
 
 const BASE_API = process.env.NEXT_PUBLIC_BASE_API;
 
+// Helper function to get Auth Token
+const getAuthToken = async () => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken");
+  return accessToken?.value;
+};
+
 // Create a listing
-export const createListing = async (data: FormData) => {
+// export const createListing = async (data: FormData) => {
+//   try {
+//     const res = await fetch(`${BASE_API}/landlords/listings`, {
+//       method: "POST",
+//       headers: {
+//         Authorization: (await cookies()).get("accessToken")!.value,
+//       },
+//       body: data,
+//     });
+
+//     revalidateTag("rentalListings");
+
+//     return res.json();
+//   } catch (error: any) {
+//     return Error(error);
+//   }
+// };
+
+export const createListing = async (listingData: any) => {
   try {
+    const token = await getAuthToken();
+    if (!token) return { success: false, message: "Authentication token not found" };
+
     const res = await fetch(`${BASE_API}/landlords/listings`, {
       method: "POST",
       headers: {
-        Authorization: (await cookies()).get("accessToken")!.value,
+        "Content-Type": "application/json",
+        Authorization: token,
       },
-      body: data,
+      body: JSON.stringify({
+        rentalHouse: {
+          location: listingData.location,
+          description: listingData.description,
+          rentAmount: Number(listingData.rentAmount),
+          bedrooms: Number(listingData.bedrooms),
+          images: listingData.images,
+          amenities: listingData.amenities,
+        },
+      }),
     });
 
     revalidateTag("rentalListings");
+    return res.json();
+  } catch (error: any) {
+    console.error("Error in createListing:", error);
+    return { success: false, message: error.message || "Failed to create listing" };
+  }
+};
+
+// Get landlord-specific listings
+export const getLandlordListings = async () => {
+  try {
+    const token = await getAuthToken();
+    if (!token) return { success: false, message: "Authentication token not found" };
+
+    const res = await fetch(`${BASE_API}/landlords/landlord/listings`, {
+      headers: { Authorization: token },
+      next: { tags: ["rentalListings"] },
+    });
 
     return res.json();
   } catch (error: any) {
-    return Error(error);
+    console.error("Error in getLandlordListings:", error);
+    return { success: false, message: error.message || "Failed to fetch landlord listings" };
   }
 };
 
