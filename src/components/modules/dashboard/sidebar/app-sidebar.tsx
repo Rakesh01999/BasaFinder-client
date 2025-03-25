@@ -114,6 +114,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             // url: "/landlords/listings/add",
             url: "/landlords/listings",
           },
+          {
+            title: "View Listing",
+            url: "/landlords/listings/view",
+          },
         ],
       },
       {
@@ -125,52 +129,52 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             title: "All Requests",
             url: "/landlord/requests",
           },
-          {
-            title: "Pending Requests",
-            url: "/landlords/requests/pending",
-          },
-          {
-            title: "Approved Requests",
-            url: "/landlords/requests/approved",
-          },
-          {
-            title: "Rejected Requests",
-            url: "/landlords/requests/rejected",
-          },
+          // {
+          //   title: "Pending Requests",
+          //   url: "/landlords/requests/pending",
+          // },
+          // {
+          //   title: "Approved Requests",
+          //   url: "/landlords/requests/approved",
+          // },
+          // {
+          //   title: "Rejected Requests",
+          //   url: "/landlords/requests/rejected",
+          // },
         ],
       },
-      {
-        title: "Payments",
-        url: "/landlords/payments",
-        icon: Wallet,
-        items: [
-          {
-            title: "Received Payments",
-            url: "/landlords/payments/received",
-          },
-          {
-            title: "Payment History",
-            url: "/landlords/payments/history",
-          },
-        ],
-      },
+      // {
+      //   title: "Payments",
+      //   url: "/landlords/payments",
+      //   icon: Wallet,
+      //   items: [
+      //     {
+      //       title: "Received Payments",
+      //       url: "/landlords/payments/received",
+      //     },
+      //     {
+      //       title: "Payment History",
+      //       url: "/landlords/payments/history",
+      //     },
+      //   ],
+      // },
       {
         title: "Profile",
         url: "/profile",
         icon: User,
       },
       {
-        title: "Settings",
-        url: "/settings",
+        title: "Account Settings",
+        url: "/update-profile",
         icon: Settings,
         items: [
           {
-            title: "Account Settings",
-            url: "/settings/account",
+            title: "Update Profile",
+            url: "/update-profile",
           },
           {
             title: "Change Password",
-            url: "/settings/password",
+            url: "/change-password",
           },
         ],
       },

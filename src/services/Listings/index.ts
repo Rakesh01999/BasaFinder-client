@@ -111,21 +111,32 @@ export const getSingleListing = async (listingId: string) => {
 };
 
 // Update listing
-export const updateListing = async (listingId: string, data: FormData) => {
+// export const updateListing = async (listingId: string, data: FormData) => {
+// export const updateListing = async (data: FormData, listingId: string) => {
+export const updateListing = async (listingId: string, data: any) => {
   try {
     const res = await fetch(`${BASE_API}/landlords/listings/${listingId}`, {
       method: "PATCH",
       headers: {
+        "Content-Type": "application/json", // Explicitly set JSON content type
         Authorization: (await cookies()).get("accessToken")!.value,
       },
-      body: data,
+      body: JSON.stringify(data), // Convert data to JSON string
     });
+
+    if (!res.ok) {
+      // Handle non-200 responses
+      const errorBody = await res.text();
+      console.error('Error response:', errorBody);
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
 
     revalidateTag("rentalListings");
 
-    return res.json();
-  } catch (error: any) {
-    return Error(error);
+    return await res.json();
+  } catch (error) {
+    console.error('Update listing error:', error);
+    return { success: false, message: error instanceof Error ? error.message : 'Unknown error' };
   }
 };
 
