@@ -29,6 +29,7 @@ const amenitiesOptions = [
   { id: "ac", label: "Air Conditioning" },
   { id: "balcony", label: "Balcony" },
   { id: "security", label: "24/7 Security" },
+  { id: "lift", label: "Lift" },
 ];
 
 const EditListing = () => {

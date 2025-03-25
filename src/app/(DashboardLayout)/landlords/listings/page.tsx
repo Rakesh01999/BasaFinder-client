@@ -58,6 +58,7 @@ const CreateRentalListing = () => {
     { id: "ac", label: "Air Conditioning" },
     { id: "balcony", label: "Balcony" },
     { id: "security", label: "24/7 Security" },
+    { id: "lift", label: "Lift" },
   ];
 
   // Handle input changes
@@ -297,7 +298,7 @@ const CreateRentalListing = () => {
                 <SelectValue placeholder="Select bedrooms" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="0">Studio</SelectItem>
+                {/* <SelectItem value="0">Studio</SelectItem> */}
                 <SelectItem value="1">1 Bedroom</SelectItem>
                 <SelectItem value="2">2 Bedrooms</SelectItem>
                 <SelectItem value="3">3 Bedrooms</SelectItem>

@@ -18,11 +18,23 @@ import { Loader2, Phone, XCircle, CheckCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Modal from "@/components/ui/Modal";
 
-const LandlordTenantRequests = () => {
+const PendingTenantRequests = () => {
   const { user } = useUser();
   const router = useRouter();
 
-  const [requests, setRequests] = useState<any[]>([]);
+  type RentalRequest = {
+    _id: string;
+    tenantId: string;
+    tenant: { name: string };
+    location: string;
+    message: string;
+    rentAmount: number;
+    status: string;
+  };
+
+  const [requests, setRequests] = useState<RentalRequest[]>([]);
+console.log('requests :',requests)
+  // const [requests, setRequests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState<string | null>(null);
   const [phoneModalVisible, setPhoneModalVisible] = useState(false);
@@ -38,6 +50,7 @@ const LandlordTenantRequests = () => {
   }, [user, router]);
 
   // Fetch rental requests
+
   useEffect(() => {
     if (!user) return;
 
@@ -46,7 +59,12 @@ const LandlordTenantRequests = () => {
         setLoading(true);
         const response = await getLandlordRequests();
         if (response?.success) {
-          setRequests(response.data || []);
+          // ✅ TypeScript now understands `req` is of type RentalRequest
+          const pendingRequests =
+            response.data?.filter(
+              (req: RentalRequest) => req.status === "pending"
+            ) || [];
+          setRequests(pendingRequests);
         } else {
           toast.error(response?.message || "Failed to fetch rental requests");
         }
@@ -131,19 +149,19 @@ const LandlordTenantRequests = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
-      <h2 className="text-2xl font-semibold mb-6">Tenant Rental Requests</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-center">Pending Tenant Rental Requests</h2>
 
       {loading ? (
-        <p className="text-center text-gray-500">Loading requests...</p>
+        <p className="text-center text-gray-500">Loading pending requests...</p>
       ) : requests.length === 0 ? (
-        <p className="text-center text-gray-500">No rental requests found.</p>
+        <p className="text-center text-gray-500">No pending requests found.</p>
       ) : (
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>
                 <TableCell>Tenant ID</TableCell>
-                <TableCell>Tenant message</TableCell>
+                <TableCell>Tenant Message</TableCell>
                 <TableCell>Property</TableCell>
                 <TableCell>Rent Amount</TableCell>
                 <TableCell>Status</TableCell>
@@ -245,4 +263,4 @@ const LandlordTenantRequests = () => {
   );
 };
 
-export default LandlordTenantRequests;
+export default PendingTenantRequests;

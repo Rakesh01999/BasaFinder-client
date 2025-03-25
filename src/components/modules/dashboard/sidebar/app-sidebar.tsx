@@ -66,13 +66,22 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         ],
       },
       {
-        title: "Settings",
-        url: "#",
+        title: "Profile",
+        url: "/profile",
+        icon: User,
+      },
+      {
+        title: "Account Settings",
+        url: "/update-profile",
         icon: Settings,
         items: [
           {
-            title: "Profile",
-            url: "/profile",
+            title: "Update Profile",
+            url: "/update-profile",
+          },
+          {
+            title: "Change Password",
+            url: "/change-password",
           },
         ],
       },
@@ -115,7 +124,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             url: "/landlords/listings",
           },
           {
-            title: "View Listing",
+            title: "View My Listing",
             url: "/landlords/listings/view",
           },
         ],
@@ -129,10 +138,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             title: "All Requests",
             url: "/landlord/requests",
           },
-          // {
-          //   title: "Pending Requests",
-          //   url: "/landlords/requests/pending",
-          // },
+          {
+            title: "Pending Requests",
+            url: "/landlord/requests/pending",
+          },
           // {
           //   title: "Approved Requests",
           //   url: "/landlords/requests/approved",
