@@ -8,6 +8,7 @@ import { IUser } from "@/types";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
 
 const ProfilePage = () => {
   const { user } = useUser();
@@ -54,17 +55,25 @@ const ProfilePage = () => {
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="p-4 bg-white shadow-sm rounded-xl">
           <p className="text-sm text-gray-600">Phone Number:</p>
-          <p className="text-lg font-medium text-gray-800">{userData.phone_number || "N/A"}</p>
+          <p className="text-lg font-medium text-gray-800">
+            {userData.phone_number || "N/A"}
+          </p>
         </div>
 
         <div className="p-4 bg-white shadow-sm rounded-xl">
           <p className="text-sm text-gray-600">Address:</p>
-          <p className="text-lg font-medium text-gray-800">{userData.address || "N/A"}</p>
+          <p className="text-lg font-medium text-gray-800">
+            {userData.address || "N/A"}
+          </p>
         </div>
 
         <div className="p-4 bg-white shadow-sm rounded-xl">
           <p className="text-sm text-gray-600">Account Status:</p>
-          <p className={`text-lg font-medium ${userData.isBlocked ? "text-red-500" : "text-green-500"}`}>
+          <p
+            className={`text-lg font-medium ${
+              userData.isBlocked ? "text-red-500" : "text-green-500"
+            }`}
+          >
             {userData.isBlocked ? "Blocked" : "Active"}
           </p>
         </div>
@@ -72,9 +81,14 @@ const ProfilePage = () => {
 
       {/* <div className="mt-8 flex justify-center md:justify-end gap-4"> */}
       <div className="mt-8 flex flex-col md:flex-row md:justify-end gap-4">
-        <Button variant="outline" className="rounded-full px-6 py-2 hover:bg-blue-500 hover:text-white transition-all">
-          Update Profile
-        </Button>
+        <Link href="/update-profile">
+          <Button
+            variant="outline"
+            className="rounded-full px-6 py-2 hover:bg-blue-500 hover:text-white transition-all"
+          >
+            Update Profile
+          </Button>
+        </Link>
         <Button className="text-white rounded-full px-6 py-2 hover:bg-blue-600 transition-all">
           Change Password
         </Button>

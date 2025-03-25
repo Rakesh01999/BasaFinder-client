@@ -31,20 +31,53 @@ export const getSingleUser = async (userId: string) => {
 };
 
 // ✅ Update User Profile
-export const updateUserProfile = async (profileData: FormData) => {
+// export const updateUserProfile = async (profileData: FormData) => {
+//   try {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/update-profile`, {
+//       method: "PATCH",
+//       body: profileData,
+//       headers: {
+//         Authorization: (await cookies()).get("accessToken")!.value,
+//       },
+//     });
+//     console.log(profileData);
+//     revalidateTag("USERS");
+//     return await res.json();
+//   } catch (error: any) {
+//     return Error(error.message);
+//   }
+// };
+// Change the parameter type from FormData to the data object type
+export const updateUserProfile = async (profileData: {
+  name: string;
+  email?: string;
+  phone_number: string;
+  address: string;
+}) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/update-profile`, {
       method: "PATCH",
-      body: profileData,
+      body: JSON.stringify(profileData),
       headers: {
+        "Content-Type": "application/json",
         Authorization: (await cookies()).get("accessToken")!.value,
       },
     });
+    console.log(`${process.env.NEXT_PUBLIC_BASE_API}/update-profile`);
+    console.log("Profile Data:", profileData);
+
+    const responseData = await res.json();
+    console.log("responseData:", responseData);
+
+    if (!res.ok) {
+      throw new Error(responseData.message || 'Profile update failed');
+    }
 
     revalidateTag("USERS");
-    return await res.json();
+    return responseData;
   } catch (error: any) {
-    return Error(error.message);
+    console.error('Profile Update Error:', error);
+    return { success: false, message: error.message };
   }
 };
 
