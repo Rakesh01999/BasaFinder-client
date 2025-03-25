@@ -89,9 +89,11 @@ const ProfilePage = () => {
             Update Profile
           </Button>
         </Link>
-        <Button className="text-white rounded-full px-6 py-2 hover:bg-blue-600 transition-all">
-          Change Password
-        </Button>
+        <Link href="/change-password">
+          <Button className="text-white rounded-full px-6 py-2 hover:bg-blue-600 transition-all">
+            Change Password
+          </Button>
+        </Link>
       </div>
     </NMContainer>
   );

@@ -116,24 +116,74 @@ export const activateUser = async (userId: string) => {
 };
 
 // ✅ Change Password
-export const changePassword = async (passwordData: { currentPassword: string; newPassword: string }) => {
+export const changePassword = async (passwordData: { oldPassword: string; newPassword: string }) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/change-password`, {
       method: "POST",
       body: JSON.stringify(passwordData),
       headers: {
-        Authorization: (await cookies()).get("accessToken")!.value,
         "Content-Type": "application/json",
+        Authorization: (await cookies()).get("accessToken")!.value,
       },
     });
-
+    console.log('passwordData:', passwordData);
     return await res.json();
   } catch (error: any) {
     return Error(error.message);
   }
 };
+// export const changePassword = async (passwordData: { 
+//   currentPassword: string; 
+//   newPassword: string 
+// }) => {
+//   try {
+//     // Generate a hash that meets backend requirements
+//     const generateHash = () => {
+//       // Simple hash generation based on payload data
+//       const salt = process.env.NEXT_PUBLIC_HASH_SALT || 'defaultSalt';
+//       return btoa(JSON.stringify(passwordData) + salt + Date.now());
+//     };
+
+//     // Create payload matching backend structure
+//     const payload = {
+//       data: {
+//         oldPassword: passwordData.currentPassword,
+//         newPassword: passwordData.newPassword,
+//         timestamp: new Date().toISOString(),
+//         source: 'web-client'
+//       },
+//       hash: '' // We'll generate this next
+//     };
+
+//     // Generate hash after creating data object
+//     payload.hash = generateHash();
+
+//     console.log('Sending Payload:', payload);
+
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/change-password`, {
+//       method: "POST",
+//       body: JSON.stringify(payload),
+//       headers: {
+//         Authorization: `${(await cookies()).get("accessToken")?.value}`,
+//         "Content-Type": "application/json",
+//       },
+//     });
+    
+//     const response = await res.json();
+//     console.log('Full Backend Response:', response);
+    
+//     return response;
+//   } catch (error: any) {
+//     console.error('Password Change Error:', error);
+//     return { 
+//       success: false, 
+//       message: error.message || 'An unexpected error occurred' 
+//     };
+//   }
+// };
 
 // ✅ Calculate Revenue
+
 export const calculateRevenue = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/payment/revenue`, {
