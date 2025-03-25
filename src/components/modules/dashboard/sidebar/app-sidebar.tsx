@@ -110,7 +110,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             url: "/listings",
           },
           {
-            title: "Add New Listing",
+            title: "Post/Add New Listing",
             // url: "/landlords/listings/add",
             url: "/landlords/listings",
           },
