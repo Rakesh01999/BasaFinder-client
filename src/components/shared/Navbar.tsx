@@ -55,15 +55,16 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "All Rentals", href: "/listings" },
+    { name: "About-Us", href: "/about" },
+    { name: "All-Rentals", href: "/listings" },
 
     ...(user ? [{ name: "Dashboard", href: `/${user.role}s/dashboard` }] : []),
 
   ];
 
   return (
-    <header className={`border-b bg-white w-full sticky top-0 z-20 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}>
+    // <header className={`border-b bg-white w-full sticky top-0 z-20 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}>
+    <header className={`border-b bg-gradient-to-r from-blue-300 to-cyan-200  w-full sticky top-0 z-20 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}>
       <div className="container flex items-center justify-between mx-auto h-16 px-4 sm:px-5">
         {/* Logo - Responsive sizing */}
         <Link href="/" className="flex items-center space-x-2">
