@@ -72,24 +72,33 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             url: "/admin/listings",
           },
           {
-            title: "Review Listings",
-            url: "/admin/listings/review",
+            title: "Update Listings",
+            url: "/admin/update-listing",
+          },
+          {
+            title: "Delete Listings",
+            url: "/admin/delete-listing",
+          },
+          {
+            title: "Review/Oversee Listings",
+            url: "/admin/reviewListings",
           },
         ],
       },
       {
         title: "Profile",
-        url: "/profile",
+        // url: "/profile",
+        url: "/admin/myProfile",
         icon: User,
       },
       {
         title: "Settings",
-        url: "/admin/settings",
+        url: "/update-profile",
         icon: Settings,
         items: [
           {
             title: "Admin Preferences",
-            url: "/admin/settings",
+            url: "/update-profile",
           },
           {
             title: "Change Password",

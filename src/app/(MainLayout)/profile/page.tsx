@@ -54,10 +54,18 @@ const ProfilePage = () => {
       </div>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+
         <div className="p-4 bg-white shadow-sm rounded-xl">
           <p className="text-sm text-gray-600">Phone Number:</p>
           <p className="text-lg font-medium text-gray-800">
             {userData.phone_number || "N/A"}
+          </p>
+        </div>
+
+        <div className="p-4 bg-white shadow-sm rounded-xl">
+          <p className="text-sm text-gray-600">Email:</p>
+          <p className="text-lg font-medium text-gray-800">
+            {userData.email || "N/A"}
           </p>
         </div>
 
