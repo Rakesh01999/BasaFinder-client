@@ -84,7 +84,8 @@ export const updateUserProfile = async (profileData: {
 // ✅ Block User
 export const blockUser = async (userId: string) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/users/${userId}`, {
+    // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/users/${userId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/${userId}`, {
       method: "PUT",
       headers: {
         Authorization: (await cookies()).get("accessToken")!.value,
@@ -101,7 +102,8 @@ export const blockUser = async (userId: string) => {
 // ✅ Activate User
 export const activateUser = async (userId: string) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/users/${userId}`, {
+    // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/users/${userId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/${userId}`, {
       method: "PATCH",
       headers: {
         Authorization: (await cookies()).get("accessToken")!.value,

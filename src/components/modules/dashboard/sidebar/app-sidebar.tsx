@@ -57,7 +57,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           },
           {
             title: "Manage Roles",
-            url: "/admin/users/manage-roles",
+            // url: "/admin/users/manage-roles",
+            url: "/admin/manage-roles",
           },
         ],
       },

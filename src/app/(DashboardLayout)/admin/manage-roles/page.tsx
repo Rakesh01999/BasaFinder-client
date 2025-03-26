@@ -9,13 +9,19 @@ import {
   TableHead,
   TableCell,
 } from "@/components/ui/table";
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getAllUsers,  } from "@/services/Admin"; // Adjust import path as needed
+import { getAllUsers, updateUserRole, deleteUser } from "@/services/Admin"; // Adjust import path as needed
 import { blockUser, activateUser } from "@/services/Users"; // Adjust import path as needed
 import { toast } from "sonner";
-import { Loader2,  Lock, Unlock } from "lucide-react";
+import { Loader2, Trash2, Lock, Unlock } from "lucide-react";
 
 // Define interface for user data
 interface User {
@@ -27,11 +33,11 @@ interface User {
   isBlocked: boolean;
 }
 
-const UsersManagementPage = () => {
+const UsersRoleManagementPage = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   const [loading, setLoading] = useState(true);
-  const [actionLoading, setActionLoading] = useState<{
+  const [_actionLoading, setActionLoading] = useState<{
     [key: string]: boolean;
   }>({});
 
@@ -57,35 +63,23 @@ const UsersManagementPage = () => {
     fetchUsers();
   }, []);
 
-  // Handle block/unblock user
-  const handleToggleUserStatus = async (
-    userId: string,
-    isCurrentlyBlocked: boolean
-  ) => {
+  // Handle user role update
+  const handleUpdateUserRole = async (userId: string, newRole: string) => {
     setActionLoading((prev) => ({ ...prev, [userId]: true }));
     try {
-      const response = isCurrentlyBlocked
-        ? await activateUser(userId)
-        : await blockUser(userId);
-
+      const response = await updateUserRole(userId, newRole);
       if (response.success) {
         setUsers((prev) =>
           prev.map((user) =>
-            user._id === userId
-              ? { ...user, isBlocked: !isCurrentlyBlocked }
-              : user
+            user._id === userId ? { ...user, role: newRole } : user
           )
         );
-        toast.success(
-          isCurrentlyBlocked
-            ? "User successfully activated"
-            : "User successfully blocked"
-        );
+        toast.success(`User role updated to ${newRole.toUpperCase()}`);
       } else {
-        toast.error(response.message || "Failed to update user status");
+        toast.error(response.message || "Failed to update user role");
       }
     } catch (error) {
-      toast.error("An error occurred while updating user status");
+      toast.error("An error occurred while updating user role");
     } finally {
       setActionLoading((prev) => ({ ...prev, [userId]: false }));
     }
@@ -111,6 +105,7 @@ const UsersManagementPage = () => {
       <h2 className="text-2xl font-semibold mb-6 text-center">
         User Management
       </h2>
+      <h2 className="text-xl mb-6 text-center">Manage All Users Role</h2>
 
       {loading ? (
         <div className="flex justify-center items-center h-40">
@@ -126,12 +121,11 @@ const UsersManagementPage = () => {
               <TableRow className="font-bold md:text-lg text-center">
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
-                <TableHead>Role/Status</TableHead>
-                {/* <TableHead>Status</TableHead> */}
-                <TableHead>Actions</TableHead>
+                <TableHead>Role</TableHead>
+                <TableHead>Current Role/Status</TableHead>
+                {/* <TableHead>Actions</TableHead> */}
               </TableRow>
             </TableHeader>
-
             <TableBody>
               {users.map((user) => (
                 <TableRow key={user._id}>
@@ -139,12 +133,31 @@ const UsersManagementPage = () => {
                   <TableCell>{user.email}</TableCell>
 
                   <TableCell>
+                    <Select
+                      value={user.role}
+                      onValueChange={(newRole) =>
+                        handleUpdateUserRole(user._id, newRole)
+                      }
+                      disabled={user.role === "admin"}
+                    >
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="admin">Admin</SelectItem>
+                        <SelectItem value="landlord">Landlord</SelectItem>
+                        <SelectItem value="tenant">Tenant</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </TableCell>
+
+                  <TableCell>
                     <Badge variant={getBadgeVariant(user.role, user.isBlocked)}>
                       {user.isBlocked ? "BLOCKED" : user.role.toUpperCase()}
                     </Badge>
                   </TableCell>
 
-                  <TableCell>
+                  {/* <TableCell>
                     <div className="flex gap-2">
                       <Button
                         // variant="outline"
@@ -166,23 +179,10 @@ const UsersManagementPage = () => {
                         )}
                         {user.isBlocked ? "Activate" : "Block"}
                       </Button>
-                      {/* <Button
-                        variant="destructive"
-                        size="sm"
-                        onClick={() => handleDeleteUser(user._id)}
-                        disabled={
-                          user.role === "admin" || actionLoading[user._id]
-                        }
-                      >
-                        {actionLoading[user._id] ? (
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        ) : (
-                          <Trash2 className="mr-2 h-4 w-4" />
-                        )}
-                        Delete
-                      </Button> */}
+                     
                     </div>
                   </TableCell>
+                   */}
                 </TableRow>
               ))}
             </TableBody>
@@ -193,4 +193,4 @@ const UsersManagementPage = () => {
   );
 };
 
-export default UsersManagementPage;
+export default UsersRoleManagementPage;
