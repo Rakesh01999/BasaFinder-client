@@ -62,7 +62,7 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
     <NMContainer className="my-20">
       {/* Search Section */}
       <div className="bg-white p-6 rounded-xl shadow-md mb-10">
-        <h3 className="text-xl font-semibold mb-4">Search Rental Properties</h3>
+        <h3 className="text-xl font-semibold mb-4 text-center">Search Rental Properties</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-medium mb-1">Location</label>
@@ -110,7 +110,8 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
             </Select>
           </div>
           
-          <div className="flex items-end gap-2">
+          {/* <div className="flex md:flex-row flex-col items-end gap-2"> */}
+          <div className="flex flex-col gap-2">
             <Button 
               onClick={handleSearch} 
               className="bg-blue-600 text-white hover:bg-blue-700 flex-1"

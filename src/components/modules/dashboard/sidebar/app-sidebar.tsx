@@ -1,23 +1,16 @@
-// src/components/modules/dashboard/sidebar/app-sidebar.tsx
-
 "use client";
 
 import * as React from "react";
 import {
   Bot,
   Building,
-  Frame,
-  Home,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
-  Settings,
   SquareTerminal,
   Users,
-  Wallet,
+  Settings,
+  Send,
+  LifeBuoy,
   FileText,
-  User
+  User,
 } from "lucide-react";
 
 import {
@@ -37,11 +30,88 @@ import { usePathname } from "next/navigation";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
-  
-  // Determine if the user is a landlord based on the URL path
-  const isLandlord = pathname.includes('/landlords');
-  
-  // Define navigation data based on user type
+
+  // Detect the user role from the URL path
+  const isAdmin = pathname.includes("/admin");
+  const isLandlord = pathname.includes("/landlords");
+  const isTenant = pathname.includes("/tenants");
+
+  // Admin Navigation Data
+  const adminNavData = {
+    navMain: [
+      {
+        title: "Dashboard",
+        // url: "/admin/dashboard",
+        url: "/admin/dashboard",
+        icon: SquareTerminal,
+        isActive: pathname === "/admin/dashboard",
+      },
+      {
+        title: "User Management",
+        url: "/admin/users",
+        icon: Users,
+        items: [
+          {
+            title: "All Users",
+            url: "/admin/users",
+          },
+          {
+            title: "Manage Roles",
+            url: "/admin/users/manage-roles",
+          },
+        ],
+      },
+      {
+        title: "Rental Listings",
+        url: "/admin/listings",
+        icon: Building,
+        items: [
+          {
+            title: "All Listings",
+            url: "/admin/listings",
+          },
+          {
+            title: "Review Listings",
+            url: "/admin/listings/review",
+          },
+        ],
+      },
+      {
+        title: "Profile",
+        url: "/profile",
+        icon: User,
+      },
+      {
+        title: "Settings",
+        url: "/admin/settings",
+        icon: Settings,
+        items: [
+          {
+            title: "Admin Preferences",
+            url: "/admin/settings",
+          },
+          {
+            title: "Change Password",
+            url: "/change-password",
+          },
+        ],
+      },
+    ],
+    navSecondary: [
+      {
+        title: "Help Center",
+        url: "/help",
+        icon: LifeBuoy,
+      },
+      {
+        title: "Contact Support",
+        url: "/contact",
+        icon: Send,
+      },
+    ],
+  };
+
+  // Tenant Navigation Data
   const tenantNavData = {
     navMain: [
       {
@@ -89,17 +159,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     navSecondary: [
       {
         title: "Support",
-        url: "#",
+        url: "/help",
         icon: LifeBuoy,
       },
       {
         title: "Feedback",
-        url: "#",
+        url: "/feedback",
         icon: Send,
       },
     ],
   };
 
+  // Landlord Navigation Data
   const landlordNavData = {
     navMain: [
       {
@@ -115,12 +186,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         items: [
           {
             title: "All Listings",
-            // url: "/landlords/listings",
             url: "/listings",
           },
           {
-            title: "Post/Add New Listing",
-            // url: "/landlords/listings/add",
+            title: "Post New Listing",
             url: "/landlords/listings",
           },
           {
@@ -142,31 +211,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             title: "Pending Requests",
             url: "/landlord/requests/pending",
           },
-          // {
-          //   title: "Approved Requests",
-          //   url: "/landlords/requests/approved",
-          // },
-          // {
-          //   title: "Rejected Requests",
-          //   url: "/landlords/requests/rejected",
-          // },
         ],
       },
-      // {
-      //   title: "Payments",
-      //   url: "/landlords/payments",
-      //   icon: Wallet,
-      //   items: [
-      //     {
-      //       title: "Received Payments",
-      //       url: "/landlords/payments/received",
-      //     },
-      //     {
-      //       title: "Payment History",
-      //       url: "/landlords/payments/history",
-      //     },
-      //   ],
-      // },
       {
         title: "Profile",
         url: "/profile",
@@ -202,8 +248,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     ],
   };
 
-  // Choose the correct nav data based on user type
-  const data = isLandlord ? landlordNavData : tenantNavData;
+  // Select the appropriate navigation data
+  const data = isAdmin ? adminNavData : isLandlord ? landlordNavData : tenantNavData;
 
   return (
     <Sidebar collapsible="icon" {...props}>

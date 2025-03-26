@@ -46,6 +46,10 @@ export const config = {
     "/create-shop",
     "/admin",
     "/admin/:page",
+
+    "/admins",
+    "/admins/:page",
+
     "/user",
     "/user/:page",
 
