@@ -9,7 +9,7 @@ import { useUser } from "@/context/UserContext";
 import { useRentalRequest } from "@/context/RentalRequestContext";
 import { toast } from "sonner";
 import { getSingleUser } from "@/services/Users";
-import { createRentalRequest } from "@/services/Requests"; // Import request service
+import { createRentalRequest } from "@/services/Requests";
 import { IUser } from "@/types";
 import { useRouter } from "next/navigation";
 
@@ -49,6 +49,11 @@ const RentalHouseRequest = () => {
       return;
     }
 
+    if (!userData?.phone_number) {
+      toast.error("Please update your profile to add a phone number.");
+      return;
+    }
+
     if (
       !listing?._id ||
       !listing.landlordId ||
@@ -69,6 +74,10 @@ const RentalHouseRequest = () => {
         location: listing.location,
         rentAmount: Number(listing.rentAmount),
         bedrooms: Number(listing.bedrooms),
+        moveInDate: listing.moveInDate,
+        rentalDuration: listing.rentalDuration,
+        specialRequirements: listing.specialRequirements,
+        phone: userData?.phone_number, // ✅ Include phone number in request
         message,
         status: "pending",
         paymentStatus: "pending",
@@ -76,15 +85,15 @@ const RentalHouseRequest = () => {
     };
 
     console.log("Sending Request Data:", rentalRequest);
-
+    
     try {
       const res = await createRentalRequest(rentalRequest);
+      console.log("Response Data res:", res);
       if (res?.success) {
         toast.success("Rental request sent successfully!");
         setMessage("");
         setAgree(false);
-        // router.push("/tenant/dashboard"); // Redirect to dashboard
-        router.push("/tenants/dashboard"); // Redirect to dashboard
+        router.push("/tenants/dashboard");
       } else {
         toast.error(res?.message || "Failed to send request.");
       }
@@ -113,6 +122,23 @@ const RentalHouseRequest = () => {
             <label className="text-sm font-medium text-gray-700">Email</label>
             <Input disabled value={user?.email || ""} className="mt-2" />
           </div>
+        </div>
+
+        {/* Phone Number (Mandatory) */}
+        <div>
+          <label className="text-sm font-medium text-gray-700">
+            Phone Number
+          </label>
+          <Input
+            disabled
+            value={userData?.phone_number || ""}
+            className={`mt-2 ${!userData?.phone_number ? "border-red-500" : ""}`}
+          />
+          {!userData?.phone_number && (
+            <p className="text-red-500 text-xs mt-1">
+              Please update your profile to add a phone number.
+            </p>
+          )}
         </div>
 
         {/* Listing Details (Auto-populated) */}
@@ -146,12 +172,37 @@ const RentalHouseRequest = () => {
             <label className="text-sm font-medium text-gray-700">
               Landlord ID
             </label>
-            <Input
-              disabled
-              value={listing?.landlordId || ""}
-              className="mt-2"
-            />
+            <Input disabled value={listing?.landlordId || ""} className="mt-2" />
           </div>
+        </div>
+
+        {/* Additional Request Details */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-sm font-medium text-gray-700">
+              Move-in Date
+            </label>
+            <Input disabled value={listing?.moveInDate || ""} className="mt-2" />
+          </div>
+          <div>
+            <label className="text-sm font-medium text-gray-700">
+              Rental Duration
+            </label>
+            <Input disabled value={listing?.rentalDuration || ""} className="mt-2" />
+          </div>
+        </div>
+
+        {/* Special Requirements */}
+        <div>
+          <label className="text-sm font-medium text-gray-700">
+            Special Requirements
+          </label>
+          <Textarea
+            disabled
+            value={listing?.specialRequirements || "None"}
+            className="mt-2"
+            rows={3}
+          />
         </div>
 
         {/* Message Field */}
@@ -163,6 +214,7 @@ const RentalHouseRequest = () => {
             placeholder="Write your message..."
             className="mt-2"
             rows={5}
+            required
           />
         </div>
 

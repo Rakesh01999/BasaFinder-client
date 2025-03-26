@@ -13,4 +13,9 @@ export interface TRentalListing {
     isDeleted: boolean;  // Soft delete status
     createdAt: string;
     updatedAt: string;
+
+    // optional fields for rental request
+    moveInDate?: string;
+    rentalDuration?: string;
+    specialRequirements?: string;
 };

@@ -1,10 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { TRentalListing } from "@/types";
-import { Star, MapPin, BedDouble, DollarSign } from "lucide-react";
+import {
+  Star,
+  MapPin,
+  BedDouble,
+  DollarSign,
+  CalendarDays,
+  Clock,
+  FileText,
+} from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -13,16 +31,44 @@ import "swiper/css/pagination";
 import { useUser } from "@/context/UserContext";
 import { useRentalRequest } from "@/context/RentalRequestContext";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
   const { user } = useUser();
   const { setListing } = useRentalRequest();
   const router = useRouter();
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [moveInDate, setMoveInDate] = useState("");
+  const [rentalDuration, setRentalDuration] = useState("");
+  const [specialRequirements, setSpecialRequirements] = useState("");
+
+  // ✅ Handle request button click
   const handleRequestRent = () => {
-    setListing(listing); // ✅ Store listing data in context
-    console.log('listing:',listing);
-    router.push("/tenants/create"); // ✅ Navigate to the request page without query params
+    setModalOpen(true);
+  };
+
+  // ✅ Handle form submission
+  const handleSubmitRequest = () => {
+    if (!moveInDate || !rentalDuration) {
+      toast.error("Please provide move-in date and rental duration.");
+      return;
+    }
+
+    // Store data in context and navigate
+    setListing({
+      ...listing, // Keep existing listing properties
+      moveInDate,
+      rentalDuration,
+      specialRequirements,
+    } as TRentalListing & {
+      moveInDate?: string;
+      rentalDuration?: string;
+      specialRequirements?: string;
+    });
+
+    setModalOpen(false);
+    router.push("/tenants/create");
   };
 
   return (
@@ -74,15 +120,65 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
         {/* CTA Buttons */}
         <div className="flex flex-col md:flex-row gap-6 mt-6">
           {user?.role === "tenant" && (
-            <Button className="rounded-full px-6 py-2" onClick={handleRequestRent}>
-              Request Rent
+            <Button
+              className="rounded-full px-6 py-2"
+              onClick={handleRequestRent}
+            >
+              Request Rental
             </Button>
           )}
-          <Button variant="outline" className="rounded-full px-6 py-2">
-            Contact Landlord
-          </Button>
         </div>
       </CardContent>
+
+      {/* Rental Request Modal */}
+      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Request Rental</DialogTitle>
+          </DialogHeader>
+
+          {/* Move-In Date */}
+          <div className="flex items-center gap-2">
+            <CalendarDays className="text-gray-500 w-5 h-5" />
+            <Input
+              type="date"
+              value={moveInDate}
+              onChange={(e) => setMoveInDate(e.target.value)}
+              className="w-full"
+            />
+          </div>
+
+          {/* Rental Duration */}
+          <div className="flex items-center gap-2">
+            <Clock className="text-gray-500 w-5 h-5" />
+            <Input
+              type="text"
+              placeholder="Enter rental duration (e.g., 6 months)"
+              value={rentalDuration}
+              onChange={(e) => setRentalDuration(e.target.value)}
+              className="w-full"
+            />
+          </div>
+
+          {/* Special Requirements */}
+          <div className="flex items-center gap-2">
+            <FileText className="text-gray-500 w-5 h-5" />
+            <Textarea
+              placeholder="Special requirements (optional)"
+              value={specialRequirements}
+              onChange={(e) => setSpecialRequirements(e.target.value)}
+              className="w-full"
+            />
+          </div>
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setModalOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleSubmitRequest}>Submit Request</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 };

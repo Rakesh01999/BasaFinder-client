@@ -127,7 +127,8 @@ export const createRentalRequest = async (requestData: any) => {
       },
       body: JSON.stringify(requestData),
     });
-
+// console.log('res-fRS:',res) ;
+// console.log('requestData-fRS:',requestData) ;
     revalidateTag("rentalRequests");
 
     return res.json();
