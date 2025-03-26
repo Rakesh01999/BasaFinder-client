@@ -7,11 +7,11 @@ const Footer = () => {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/shop", label: "Shop" },
-    { href: "/products", label: "App Products" },
+    { href: "/listings", label: "Listings" },
     { href: "/about", label: "About Us" },
-    { href: "/testimonial", label: "Testimonial" },
-    { href: "/blogs", label: "Blogs" },
-    { href: "/contact", label: "Contact Us" },
+    { href: "", label: "Testimonial" },
+    // { href: "#", label: "Blogs" },
+    { href: "#", label: "Contact Us" },
   ];
 
   const socialLinks = [
@@ -30,7 +30,7 @@ const Footer = () => {
             <Image src={logo} alt="BasaFinder Logo" width={50} height={40} />
             <h1 className="text-2xl font-bold">BasaFinder</h1>
           </div>
-          <p className="text-gray-500 mt-3 max-w-md text-sm">
+          <p className=" mt-3 max-w-md text-sm">
             Connecting landlords and tenants seamlessly. Discover, rent, and
             manage properties with ease. Your ideal rental journey starts here.
           </p>
@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <p className="text-xs text-gray-400 text-center">
+        <p className="text-xs text-center">
           © {new Date().getFullYear()} BasaFinder. All Rights Reserved.
         </p>
       </div>

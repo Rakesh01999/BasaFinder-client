@@ -87,7 +87,7 @@ export default function Navbar() {
           ))}
 
           {/* Cart with responsive spacing */}
-          <Link href="/cart" className="relative ml-1">
+          {/* <Link href="/cart" className="relative ml-1">
             <Button
               variant="outline"
               size="sm"
@@ -100,7 +100,7 @@ export default function Navbar() {
                 </span>
               )}
             </Button>
-          </Link>
+          </Link> */}
 
           {/* User Authentication - Desktop */}
           {user ? (

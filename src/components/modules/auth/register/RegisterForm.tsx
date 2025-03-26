@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationSchema } from "./registerValidation";
 import { registerUser } from "@/services/AuthService";
@@ -10,11 +10,24 @@ import { useUser } from "@/context/UserContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormMessage,
+  FormControl,
+} from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import Image from "next/image";
+import logo from "@/assets/logo.png";
 
 export default function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const form = useForm({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
@@ -51,8 +64,22 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-md w-full p-5">
-      <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Register</h1>
+    <div className="bg-blue-300 border-2 border-gray-300 rounded-xl flex-grow max-w-md w-full p-5">
+      <Link href="/" className="flex items-center space-x-2">
+        <Image
+          src={logo}
+          alt="BasaFinder Logo"
+          width={40}
+          height={32}
+          className="w-8 h-auto sm:w-10 md:w-12"
+        />
+        <span className="text-lg sm:text-xl md:text-2xl font-bold">
+          BasaFinder
+        </span>
+      </Link>
+      <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        Register
+      </h1>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -77,13 +104,18 @@ export default function RegisterForm() {
               <FormItem>
                 <Label htmlFor="email">Email</Label>
                 <FormControl>
-                  <Input {...field} type="email" placeholder="Enter your email" />
+                  <Input
+                    {...field}
+                    type="email"
+                    placeholder="Enter your email"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
+          {/* Password Field with Toggle */}
           <FormField
             control={form.control}
             name="password"
@@ -91,13 +123,29 @@ export default function RegisterForm() {
               <FormItem>
                 <Label htmlFor="password">Password</Label>
                 <FormControl>
-                  <Input {...field} type="password" placeholder="Enter your password" />
+                  <div className="relative">
+                    <Input
+                      {...field}
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Enter your password"
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="absolute inset-y-0 right-2 flex items-center"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </Button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
+          {/* Confirm Password Field with Toggle */}
           <FormField
             control={form.control}
             name="passwordConfirm"
@@ -105,15 +153,34 @@ export default function RegisterForm() {
               <FormItem>
                 <Label htmlFor="passwordConfirm">Confirm Password</Label>
                 <FormControl>
-                  <Input {...field} type="password" placeholder="Confirm your password" />
+                  <div className="relative">
+                    <Input
+                      {...field}
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Confirm your password"
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="absolute inset-y-0 right-2 flex items-center"
+                      onClick={() => setShowConfirmPassword((prev) => !prev)}
+                    >
+                      {showConfirmPassword ? (
+                        <EyeOff size={18} />
+                      ) : (
+                        <Eye size={18} />
+                      )}
+                    </Button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-           {/* ✅ Fixed Role Section */}
-           <FormField
+          {/* Role Selection */}
+          <FormField
             control={form.control}
             name="role"
             render={({ field }) => (
@@ -138,7 +205,6 @@ export default function RegisterForm() {
             )}
           />
 
-
           <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Registering..." : "Register"}
           </Button>
@@ -146,9 +212,15 @@ export default function RegisterForm() {
       </Form>
 
       <p className="text-sm text-gray-600 text-center my-3">
-        Already have an account ?
+        Already have an account?
         <Link href="/login" className="text-primary">
           Login
+        </Link>
+      </p>
+      <p className="text-sm text-gray-600 text-center my-3">
+        Go to{" "}
+        <Link href="/" className="text-primary">
+          Home
         </Link>
       </p>
     </div>
