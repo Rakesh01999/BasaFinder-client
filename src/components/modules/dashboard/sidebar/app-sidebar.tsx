@@ -87,22 +87,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
       {
         title: "Profile",
-        // url: "/profile",
-        url: "/admin/myProfile",
+        // url: "/admin/myProfile",
+        url: "/admin/my-profile",
         icon: User,
       },
       {
         title: "Settings",
-        url: "/update-profile",
+        url: "/admin/update-profile",
         icon: Settings,
         items: [
           {
             title: "Admin Preferences",
-            url: "/update-profile",
+            // url: "/update-profile",
+            url: "/admin/update-profile",
           },
           {
             title: "Change Password",
-            url: "/change-password",
+            // url: "/change-password",
+            url: "/admin/change-password",
           },
         ],
       },
