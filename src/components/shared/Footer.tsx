@@ -6,7 +6,6 @@ import Link from "next/link";
 const Footer = () => {
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/shop", label: "Shop" },
     { href: "/listings", label: "Listings" },
     { href: "/about", label: "About Us" },
     { href: "", label: "Testimonial" },

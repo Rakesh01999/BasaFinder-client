@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationSchema } from "./registerValidation";
-import { registerUser } from "@/services/AuthService";
+import { logout, registerUser } from "@/services/AuthService";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useUser } from "@/context/UserContext";
@@ -53,7 +53,9 @@ export default function RegisterForm() {
       setIsLoading(true);
       if (res?.success) {
         toast.success(res?.message);
-        router.push("/");
+        await logout();
+        router.push("/login");
+        toast.info("Please Login ");
       } else {
         toast.error(res?.message);
       }
@@ -65,21 +67,23 @@ export default function RegisterForm() {
 
   return (
     <div className="bg-blue-300 border-2 border-gray-300 rounded-xl flex-grow max-w-md w-full p-5">
-      <Link href="/" className="flex items-center space-x-2">
-        <Image
-          src={logo}
-          alt="BasaFinder Logo"
-          width={40}
-          height={32}
-          className="w-8 h-auto sm:w-10 md:w-12"
-        />
-        <span className="text-lg sm:text-xl md:text-2xl font-bold">
-          BasaFinder
-        </span>
-      </Link>
-      <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
-        Register
-      </h1>
+      <div className="flex items-center flex-col space-x-4">
+        <Link href="/" className="flex items-center space-x-2">
+          <Image
+            src={logo}
+            alt="BasaFinder Logo"
+            width={40}
+            height={32}
+            className="w-8 h-auto sm:w-10 md:w-12"
+          />
+          <span className="text-lg sm:text-xl md:text-2xl font-bold">
+            BasaFinder
+          </span>
+        </Link>
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Register
+        </h1>
+      </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

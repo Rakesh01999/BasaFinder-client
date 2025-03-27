@@ -11,7 +11,7 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: "Hashem Ali",
+    name: "Rakesh Biswas",
     role: "Founder & CEO",
     image: "https://i.postimg.cc/zfPD32Jy/15507337785.jpg",
     bio: "Real estate visionary with 10+ years of experience in property management and tech innovation.",

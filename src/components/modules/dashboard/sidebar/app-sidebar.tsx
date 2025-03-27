@@ -147,7 +147,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
       {
         title: "Profile",
-        url: "/profile",
+        // url: "/profile",
+        url: "/tenants/dashboard/my-profile",
         icon: User,
       },
       {
