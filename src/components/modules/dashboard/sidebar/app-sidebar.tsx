@@ -207,7 +207,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         items: [
           {
             title: "All Listings",
-            url: "/listings",
+            // url: "/listings",
+            url: "/landlords/allListings",
           },
           {
             title: "Post New Listing",
@@ -226,31 +227,37 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         items: [
           {
             title: "All Requests",
-            url: "/landlord/requests",
+            // url: "/landlord/requests",
+            url: "/landlords/requests",
           },
           {
             title: "Pending Requests",
-            url: "/landlord/requests/pending",
+            // url: "/landlord/requests/pending",
+            url: "/landlords/pendingRequests",
           },
         ],
       },
       {
         title: "Profile",
-        url: "/profile",
+        // url: "/profile",
+        url: "/landlords/my-profile",
         icon: User,
       },
       {
         title: "Account Settings",
-        url: "/update-profile",
+        // url: "/update-profile",
+        url: "/landlords/update-profile",
         icon: Settings,
         items: [
           {
             title: "Update Profile",
-            url: "/update-profile",
+            // url: "/update-profile",
+            url: "/landlords/update-profile",
           },
           {
             title: "Change Password",
-            url: "/change-password",
+            // url: "/change-password",
+            url: "/landlords/change-password",
           },
         ],
       },

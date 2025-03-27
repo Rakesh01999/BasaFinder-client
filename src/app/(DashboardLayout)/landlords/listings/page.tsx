@@ -246,7 +246,7 @@ const CreateRentalListing = () => {
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md my-10">
       <h2 className="text-3xl font-semibold mb-6 text-center">
-        Create a New Listing
+        Create/Post a New Listing
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Location */}
