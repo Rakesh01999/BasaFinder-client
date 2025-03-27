@@ -128,17 +128,18 @@ const UpdateProfile = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8"
-      style={{
-        background: `linear-gradient(135deg, ${blueColors.background} 0%, white 100%)`,
-      }}
+      // style={{
+      //   background: `linear-gradient(135deg, ${blueColors.background} 0%, white 100%)`,
+      // }}
     >
       <Card className="w-full max-w-md shadow-2xl rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl border border-blue-200">
         <CardContent className="pt-6 pb-8 px-6">
           <div className="text-center mb-6 sm:mb-8">
             <div
-              className="mx-auto mb-4 sm:mb-6 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full shadow-lg"
+              className="mx-auto mb-4 sm:mb-6 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-cyan-300"
               style={{
-                background: `linear-gradient(135deg, ${blueColors.primary} 0%, ${blueColors.secondary} 100%)`,
+                // background: `linear-gradient(135deg, ${blueColors.primary} 0%, ${blueColors.secondary} 100%)`,
+                // background: `bg-gradient-to-r from-blue-300 to-cyan-200`,
               }}
             >
               <User className="text-white w-10 h-10 sm:w-12 sm:h-12" />
@@ -280,7 +281,7 @@ const UpdateProfile = () => {
               disabled={isSubmitting}
               className="w-full py-6 rounded-xl mt-4 sm:mt-6 transform transition-all hover:scale-105 font-medium text-white"
               style={{
-                background: `linear-gradient(135deg, ${blueColors.primary} 0%, ${blueColors.secondary} 100%)`,
+                background: `bg-gradient-to-r from-blue-300 to-cyan-200`,
               }}
             >
               {isSubmitting ? (

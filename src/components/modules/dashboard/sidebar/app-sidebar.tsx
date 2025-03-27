@@ -132,7 +132,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
       {
         title: "Manage Rental Requests",
-        url: "/tenants/my-profile",
+        url: "/tenants/requests",
         icon: Bot,
         items: [
           {
@@ -141,7 +141,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           },
           {
             title: "Payment History",
-            url: "/payment/my-payments",
+            // url: "/payment/my-payments",
+            url: "/tenants/payment-history",
           },
         ],
       },
@@ -153,16 +154,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
       {
         title: "Account Settings",
-        url: "/update-profile",
+        // url: "/update-profile",
+        url: "/tenants/dashboard/accountSettings",
         icon: Settings,
         items: [
           {
             title: "Update Profile",
-            url: "/update-profile",
+            // url: "/update-profile",
+            url: "/tenants/dashboard/update-profile",
           },
           {
             title: "Change Password",
-            url: "/change-password",
+            // url: "/change-password",
+            url: "/tenants/dashboard/change-password",
           },
         ],
       },

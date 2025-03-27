@@ -132,11 +132,11 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
       {/* Listings Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-3xl font-bold">All Listings</h2>
-        <Link href="/listings">
+        {/* <Link href="/listings">
           <Button variant="outline" className="rounded-full">
             View All
           </Button>
-        </Link>
+        </Link> */}
       </div>
 
       {/* Listings Grid */}

@@ -87,13 +87,13 @@ const AboutUs = () => {
       </section>
 
       {/* Contact Information Section */}
-      <section className="bg-blue-500 text-white py-12 md:py-16">
+      <section className="bg-gradient-to-r from-blue-300 to-cyan-200 text-white py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-black">
             Contact Us
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-gradient-to-r from-blue-300 to-cyan-200 p-4 md:p-6 rounded-xl text-center">
+            <div className="bg-gradient-to-r from-blue-400 to-cyan-200 p-4 md:p-6 rounded-xl text-center">
               <Mail className="w-8 h-8 md:w-12 md:h-12 mx-auto mb-3 md:mb-4" />
               <h3 className="text-lg md:text-xl font-semibold mb-2">Email</h3>
               {/* <p className="text-sm md:text-base">support@basafinder.com</p> */}
@@ -104,13 +104,13 @@ const AboutUs = () => {
                 support@basafinder.com
               </p>
             </div>
-            <div className="bg-gradient-to-r from-blue-300 to-cyan-200 p-4 md:p-6 rounded-xl text-center">
+            <div className="bg-gradient-to-r from-blue-400 to-cyan-200 p-4 md:p-6 rounded-xl text-center">
               <Phone className="w-8 h-8 md:w-12 md:h-12 mx-auto mb-3 md:mb-4" />
               <h3 className="text-lg md:text-xl font-semibold mb-2">Phone</h3>
               <p className="text-sm md:text-base text-black">+880 1234 567 890</p>
               <p className="text-sm md:text-base text-black">+880 9876 543 210</p>
             </div>
-            <div className="bg-gradient-to-r from-blue-300 to-cyan-200 p-4 md:p-6 rounded-xl text-center">
+            <div className="bg-gradient-to-r from-blue-400 to-cyan-200 p-4 md:p-6 rounded-xl text-center">
               <div className="flex justify-center space-x-4 md:space-x-6 mb-3 md:mb-4">
                 <Facebook className="w-6 h-6 md:w-10 md:h-10 hover:text-gray-200 transition" />
                 <Linkedin className="w-6 h-6 md:w-10 md:h-10 hover:text-gray-200 transition" />

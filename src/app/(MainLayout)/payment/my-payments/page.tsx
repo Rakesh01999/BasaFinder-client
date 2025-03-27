@@ -66,7 +66,7 @@ const PaymentHistory = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Payment History</h2>
+      <h2 className="text-xl font-bold mb-4 text-center md:text-2xl">Payment History</h2>
       {loading ? (
         <div className="flex justify-center items-center">
           <Loader2 className="w-6 h-6 animate-spin" />
@@ -74,7 +74,7 @@ const PaymentHistory = () => {
       ) : error ? (
         <p className="text-red-500">{error}</p>
       ) : payments.length === 0 ? (
-        <p>No payments found.</p>
+        <p className="text-center md:text-xl">No payments found.</p>
       ) : (
         <Card>
           <CardContent>
