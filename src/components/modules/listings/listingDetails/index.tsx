@@ -134,17 +134,19 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Request Rental</DialogTitle>
+            <DialogTitle className="md:text-lg text-center text-blue-500">Request Rental</DialogTitle>
           </DialogHeader>
 
           {/* Move-In Date */}
           <div className="flex items-center gap-2">
             <CalendarDays className="text-gray-500 w-5 h-5" />
+            <p className="sm:text-xs md:text-lg text-gray-600 ml-2">Move in Date</p>
             <Input
               type="date"
               value={moveInDate}
               onChange={(e) => setMoveInDate(e.target.value)}
-              className="w-full"
+              // className="w-full"
+              className="w-40"
             />
           </div>
 

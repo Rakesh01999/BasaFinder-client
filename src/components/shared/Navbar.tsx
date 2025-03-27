@@ -150,7 +150,7 @@ export default function Navbar() {
         {/* Mobile Navigation Controls */}
         <div className="flex items-center space-x-3 md:hidden">
           {/* Cart for Mobile */}
-          <Link href="/cart" className="relative">
+          {/* <Link href="/cart" className="relative">
             <Button
               variant="outline"
               size="sm"
@@ -163,7 +163,7 @@ export default function Navbar() {
                 </span>
               )}
             </Button>
-          </Link>
+          </Link> */}
 
           {/* Mobile Menu Hamburger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -172,14 +172,14 @@ export default function Navbar() {
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[80%] sm:w-[300px]">
+            <SheetContent side="left" className="w-[80%] sm:w-[300px] bg-gradient-to-r from-blue-300 to-cyan-200">
               {/* Accessibility - Visually Hidden Title */}
               <div className="sr-only">
                 <DialogTitle>Mobile Navigation Menu</DialogTitle>
               </div>
 
               {/* Mobile Menu Header with Close Button */}
-              <div className="flex items-center justify-between mb-6 pt-2">
+              <div className="flex items-center justify-between mb-6 pt-2 ">
                 <Link href="/" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}>
                   <Image src={logo} alt="BasaFinder Logo" width={30} height={24} />
                   <span className="text-lg font-bold">BasaFinder</span>
@@ -205,14 +205,14 @@ export default function Navbar() {
                 ))}
 
                 {/* Cart for Mobile Menu */}
-                <Link
+                {/* <Link
                   href="/cart"
                   className="flex items-center gap-2 text-base text-gray-700 hover:text-blue-600 transition"
                   onClick={() => setIsOpen(false)}
                 >
                   <ShoppingCart className="w-5 h-5" />
                   Cart {products?.length > 0 ? `(${products.length})` : ""}
-                </Link>
+                </Link> */}
 
                 {/* Divider */}
                 <div className="border-t my-2" />

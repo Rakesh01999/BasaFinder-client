@@ -136,6 +136,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         icon: Bot,
         items: [
           {
+            title: "Make Rental Request",
+            url: "/tenants/makeRequests",
+          },
+          {
             title: "View Rental Request",
             url: "/tenants/requests",
           },
