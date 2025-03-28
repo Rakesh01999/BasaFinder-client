@@ -5,7 +5,6 @@
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Installation & Setup](#installation--setup)
-- [API Endpoints](#api-endpoints)
 - [Project Structure](#project-structure)
 - [User Roles & Access Control](#user-roles--access-control)
 - [Security Measures](#security-measures)
