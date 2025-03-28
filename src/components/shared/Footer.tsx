@@ -9,8 +9,9 @@ const Footer = () => {
     { href: "/listings", label: "Listings" },
     { href: "/about", label: "About Us" },
     { href: "", label: "Testimonial" },
-    // { href: "#", label: "Blogs" },
+    { href: "/terms-of-use", label: "Terms Of Use" },
     { href: "#", label: "Contact Us" },
+    { href: "/privacy-policy", label: "Privacy Policy" },
   ];
 
   const socialLinks = [

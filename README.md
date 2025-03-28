@@ -28,6 +28,15 @@ BasaFinder is a smart rental housing platform connecting landlords, tenants, and
 ## Live Demo
 - [Live-Demo](https://basa-finder-next.vercel.app/)
 
+
+## Admin Credentials
+
+### Email
+- adminvai1@gmail.com
+
+### Password 
+- Adminvai1!
+
 ---
 
 ## Features
