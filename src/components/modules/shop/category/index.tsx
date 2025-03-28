@@ -91,6 +91,10 @@ const ManageCategories = ({ categories }: TCategoriesProps) => {
     },
   ];
 
+  if (!categories.length) {
+    return <p className="text-center text-gray-500">No categories available.</p>;
+  }
+  
   return (
     <div>
       <div className="flex items-center justify-between">

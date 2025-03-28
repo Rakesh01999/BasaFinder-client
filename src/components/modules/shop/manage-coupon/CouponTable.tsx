@@ -2,7 +2,6 @@
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { NMTable } from "@/components/ui/core/NMTable/index";
-import TablePagination from "@/components/ui/core/NMTable/TablePagination";
 import { IMeta, IProduct } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Eye, Trash } from "lucide-react";
@@ -12,11 +11,12 @@ import { useState } from "react";
 
 const CouponTable = ({
   coupons,
-  meta,
+  
 }: {
   coupons: IProduct[];
   meta: IMeta;
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedProductsId, setSelectedProductsId] = useState<string[]>([]);
 
@@ -148,11 +148,11 @@ const CouponTable = ({
   return (
     <div className="my-5">
       <NMTable columns={columns} data={coupons || []} />
-      <TablePagination
+      {/* <TablePagination
         currentPage={currentPage}
         totalPages={meta?.totalPage}
         onPageChange={setCurrentPage}
-      />
+      /> */}
     </div>
   );
 };

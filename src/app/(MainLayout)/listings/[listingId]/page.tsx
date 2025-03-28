@@ -1,9 +1,8 @@
 import ListingBanner from "@/components/modules/listings/banner";
-import ProductBanner from "@/components/modules/products/banner";
-import ProductDetails from "@/components/modules/products/productDetails";
+
 import ListingDetails from "@/components/modules/listings/listingDetails";
 import NMContainer from "@/components/ui/core/NMContainer";
-import { getSingleProduct } from "@/services/Product";
+
 import { getSingleListing } from "@/services/Listings";
 
 const ListingDetailsPage = async ({

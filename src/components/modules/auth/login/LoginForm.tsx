@@ -1,5 +1,5 @@
 "use client";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -13,7 +13,8 @@ import { Input } from "@/components/ui/input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginUser, reCaptchaTokenVerification } from "@/services/AuthService";
+// import { loginUser, reCaptchaTokenVerification } from "@/services/AuthService";
+import { loginUser} from "@/services/AuthService";
 import { toast } from "sonner";
 import { loginSchema } from "./loginValidation";
 import { useState } from "react";
@@ -29,7 +30,7 @@ export default function LoginForm() {
   });
 
   const { setIsLoading } = useUser();
-  const [reCaptchaStatus, setReCaptchaStatus] = useState(false);
+  // const [reCaptchaStatus, setReCaptchaStatus] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // 👁 Password visibility state
 
   const searchParams = useSearchParams();
@@ -40,16 +41,16 @@ export default function LoginForm() {
     formState: { isSubmitting },
   } = form;
 
-  const handleReCaptcha = async (value: string | null) => {
-    try {
-      const res = await reCaptchaTokenVerification(value!);
-      if (res?.success) {
-        setReCaptchaStatus(true);
-      }
-    } catch (err: any) {
-      console.error(err);
-    }
-  };
+  // const handleReCaptcha = async (value: string | null) => {
+  //   try {
+  //     const res = await reCaptchaTokenVerification(value!);
+  //     if (res?.success) {
+  //       setReCaptchaStatus(true);
+  //     }
+  //   } catch (err: any) {
+  //     console.error(err);
+  //   }
+  // };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
@@ -138,21 +139,22 @@ export default function LoginForm() {
             )}
           />
 
-          <div className="flex mt-3 w-full">
+          {/* <div className="flex mt-3 w-full">
             <ReCAPTCHA
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY!}
               onChange={handleReCaptcha}
               className="mx-auto"
             />
-          </div>
+          </div> */}
 
           <Button
-            disabled={!reCaptchaStatus}
+            // disabled={!reCaptchaStatus}
             type="submit"
             className="mt-5 w-full"
           >
             {isSubmitting ? "Logging...." : "Login"}
           </Button>
+
         </form>
       </Form>
       <p className="text-sm text-gray-600 text-center my-3">

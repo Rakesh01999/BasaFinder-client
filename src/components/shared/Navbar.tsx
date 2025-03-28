@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Menu, LogOut, ShoppingCart, User, X, LayoutDashboardIcon } from "lucide-react";
+import { Menu, LogOut,  User,  LayoutDashboardIcon } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
@@ -27,6 +27,7 @@ export default function Navbar() {
   const { user, setIsLoading } = useUser();
   const pathname = usePathname();
   const router = useRouter();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const products = useAppSelector(orderedProductsSelector);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

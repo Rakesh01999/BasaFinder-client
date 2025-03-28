@@ -16,12 +16,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getAllUsers, updateUserRole, deleteUser } from "@/services/Admin"; // Adjust import path as needed
-import { blockUser, activateUser } from "@/services/Users"; // Adjust import path as needed
+import { getAllUsers, updateUserRole } from "@/services/Admin"; // Adjust import path as needed
 import { toast } from "sonner";
-import { Loader2, Trash2, Lock, Unlock } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 // Define interface for user data
 interface User {
@@ -37,6 +35,7 @@ const UsersRoleManagementPage = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_actionLoading, setActionLoading] = useState<{
     [key: string]: boolean;
   }>({});
@@ -53,6 +52,7 @@ const UsersRoleManagementPage = () => {
         } else {
           toast.error(response.message || "Failed to fetch users");
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         toast.error("An error occurred while fetching users");
       } finally {
@@ -78,6 +78,7 @@ const UsersRoleManagementPage = () => {
       } else {
         toast.error(response.message || "Failed to update user role");
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("An error occurred while updating user role");
     } finally {

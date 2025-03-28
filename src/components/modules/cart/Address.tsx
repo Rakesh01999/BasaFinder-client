@@ -19,7 +19,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 export default function Address() {
   const dispatch = useAppDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const selectedCity = useAppSelector(citySelector);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const shippingAddress = useAppSelector(shippingAddressSelector);
 
   const handleCitySelect = (city: string) => {

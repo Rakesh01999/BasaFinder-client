@@ -2,23 +2,23 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Trash } from "lucide-react";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { toast } from "sonner";
 import {
   couponSelector,
-  fetchCoupon,
   shopSelector,
   subTotalSelector,
 } from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 export default function Coupon() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const subTotal = useAppSelector(subTotalSelector);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const shopId = useAppSelector(shopSelector);
   const { isLoading, code } = useAppSelector(couponSelector);
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useAppDispatch();
 
   const form = useForm();
@@ -29,17 +29,17 @@ export default function Coupon() {
     form.reset();
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      const res = await dispatch(
-        fetchCoupon({ couponCode: data.coupon, subTotal, shopId })
-      ).unwrap();
-      console.log(res, "inside component");
-    } catch (error: any) {
-      console.log(error);
-      toast.error(error.message);
-    }
-  };
+  // const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  //   try {
+  //     const res = await dispatch(
+  //       fetchCoupon({ couponCode: data.coupon, subTotal, shopId })
+  //     ).unwrap();
+  //     console.log(res, "inside component");
+  //   } catch (error: any) {
+  //     console.log(error);
+  //     toast.error(error.message);
+  //   }
+  // };
 
   return (
     <div className="border-2 border-white bg-background brightness-105 rounded-md col-span-4  p-5 ">
@@ -48,7 +48,8 @@ export default function Coupon() {
         <p className="text-gray-500">Enter your coupon code if you have one.</p>
 
         <Form {...form}>
-          <form className="mt-3" onSubmit={form.handleSubmit(onSubmit)}>
+          {/* <form className="mt-3" onSubmit={form.handleSubmit(onSubmit)}> */}
+          <form className="mt-3">
             <FormField
               control={form.control}
               name="coupon"

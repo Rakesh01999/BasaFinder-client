@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Loader2, XCircle, UploadCloud } from "lucide-react";
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -34,6 +33,7 @@ const amenitiesOptions = [
 
 const EditListing = () => {
   const { id } = useParams();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   const [listingData, setListingData] = useState({
@@ -159,6 +159,7 @@ const EditListing = () => {
       }
 
       toast.success("Images uploaded successfully!");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("Image upload failed!");
     } finally {

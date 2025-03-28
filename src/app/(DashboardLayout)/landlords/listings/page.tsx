@@ -147,6 +147,7 @@ const CreateRentalListing = () => {
       }
 
       toast.success("Images uploaded successfully!");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("Image upload failed!");
     } finally {

@@ -34,6 +34,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   // Detect the user role from the URL path
   const isAdmin = pathname.includes("/admin");
   const isLandlord = pathname.includes("/landlords");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isTenant = pathname.includes("/tenants");
 
   // Admin Navigation Data

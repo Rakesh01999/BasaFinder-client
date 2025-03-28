@@ -47,6 +47,7 @@ const UsersManagementPage = () => {
         } else {
           toast.error(response.message || "Failed to fetch users");
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         toast.error("An error occurred while fetching users");
       } finally {
@@ -84,6 +85,7 @@ const UsersManagementPage = () => {
       } else {
         toast.error(response.message || "Failed to update user status");
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("An error occurred while updating user status");
     } finally {

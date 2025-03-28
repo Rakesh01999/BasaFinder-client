@@ -14,18 +14,23 @@ const ProfilePage = () => {
   const { user } = useUser();
   const [userData, setUserData] = useState<IUser | null>(null);
 
-  const fetchUserData = async () => {
-    if (!user?.userId) return;
-
-    const res = await getSingleUser(user.userId);
-    if (res?.success) {
-      setUserData(res.data);
-    }
-  };
-
   useEffect(() => {
+    const fetchUserData = async () => {
+      if (!user?.userId) return;
+  
+      try {
+        const res = await getSingleUser(user.userId);
+        if (res?.success) {
+          setUserData(res.data);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+  
     fetchUserData();
   }, [user?.userId]);
+  
 
   if (!userData) {
     return (

@@ -36,6 +36,7 @@ export default function VerifyPayment() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!orderId) return; // Prevent unnecessary API call
     const fetchPaymentVerification = async () => {
       if (!orderId) {
         setError("No order ID provided");

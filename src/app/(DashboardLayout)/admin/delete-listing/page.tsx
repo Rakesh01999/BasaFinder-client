@@ -70,6 +70,7 @@ const DeleteListings = () => {
           id: toastId,
         });
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("Something went wrong", { id: toastId });
     } finally {

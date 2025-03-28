@@ -9,7 +9,6 @@ import ListingCard from "@/components/ui/core/ListingCard";
 import NMContainer from "@/components/ui/core/NMContainer";
 import { getAllListings } from "@/services/Listings";
 import { TRentalListing } from "@/types";
-import Link from "next/link";
 
 type ListingWithId = TRentalListing & { _id: string };
 

@@ -8,7 +8,6 @@ import {
   getAllRequests,
 } from "@/services/Requests";
 import { makePayment } from "@/services/Payments";
-import { TRentalRequest } from "@/types";
 import {
   Table,
   TableHeader,
@@ -221,10 +220,10 @@ const ViewRequests = () => {
               <TableRow>
                 <TableCell>Property</TableCell>
                 <TableCell>Rent Amount</TableCell>
-                <TableCell>Status</TableCell>
+                <TableCell>Request Status</TableCell>
                 {user.role === "tenant" && (
                   <>
-                    <TableCell>Contact</TableCell>
+                    <TableCell>Lnadlord Contact</TableCell>
                     <TableCell>Payment Status</TableCell>
                   </>
                 )}

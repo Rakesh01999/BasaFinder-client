@@ -20,7 +20,7 @@ const persistOptions = {
   key: "cart",
   storage,
 };
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const persistedCart = persistReducer(persistOptions, cartReducer);
 
 export const makeStore = () => {

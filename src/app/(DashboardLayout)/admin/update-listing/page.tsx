@@ -1,11 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  getLandlordListings,
-  deleteListing,
-  getAllListings,
-} from "@/services/Listings";
+import { getAllListings } from "@/services/Listings";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,19 +11,19 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
-import { toast } from "sonner";
-import { Edit, Trash2, Loader2, XCircle } from "lucide-react";
-import Modal from "@/components/ui/Modal";
+import { Edit, Loader2 } from "lucide-react";
 import { TRentalListing } from "@/types";
-// import Modal from "@/components/ui/Modal";
 
 const DeleteListings = () => {
   const router = useRouter();
   type ListingWithId = TRentalListing & { _id: string };
   const [listings, setListings] = useState<ListingWithId[]>([]);
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [deleting, setDeleting] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedListingId, setSelectedListingId] = useState<string | null>(
     null
   );
@@ -85,8 +81,10 @@ const DeleteListings = () => {
                         variant="outline"
                         size="sm"
                         onClick={() =>
-                        //   router.push(`/landlords/listings/edit/${listing._id}`)
-                          router.push(`/admin/update-listing/edit/${listing._id}`)
+                          //   router.push(`/landlords/listings/edit/${listing._id}`)
+                          router.push(
+                            `/admin/update-listing/edit/${listing._id}`
+                          )
                         }
                       >
                         <Edit size={16} className="mr-1" />

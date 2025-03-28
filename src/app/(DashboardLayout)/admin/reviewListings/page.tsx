@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { getAllListings } from "@/services/Listings";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableHeader,
@@ -12,11 +11,12 @@ import {
   TableCell,
   TableHead,
 } from "@/components/ui/table";
-import { Edit, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { IUser, TRentalListing } from "@/types";
 import { getSingleUser } from "@/services/Users";
 
 const ReviewListings = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
   type ListingWithId = TRentalListing & { _id: string; landlordId: string };
   const [listings, setListings] = useState<ListingWithId[]>([]);
@@ -59,7 +59,7 @@ const ReviewListings = () => {
     if (listings.length > 0) {
       fetchLandlordDetails();
     }
-  }, [listings]);
+  }, [listings, landlords]);
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">

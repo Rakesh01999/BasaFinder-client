@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
-import styles from "./HeroSection.module.css";
+
 import Banner from "../../../../assets/Banner.jpg";
-import Image from "next/image";
-import cupImg from "@/assets/cup-with-headphone.png";
 import NMContainer from "@/components/ui/core/NMContainer";
 import Link from "next/link";
 

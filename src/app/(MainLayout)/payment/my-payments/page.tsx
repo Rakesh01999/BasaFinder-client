@@ -25,6 +25,7 @@ interface Payment {
 }
 
 // Define the response structure
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface PaymentResponse {
   success: boolean;
   message: string;
@@ -54,6 +55,7 @@ const PaymentHistory = () => {
         } else {
           setError(response.message);
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         setError("Failed to fetch payment history");
       } finally {
