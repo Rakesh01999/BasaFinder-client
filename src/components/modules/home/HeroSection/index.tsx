@@ -4,6 +4,7 @@ import Banner from "../../../../assets/Banner.jpg";
 import Image from "next/image";
 import cupImg from "@/assets/cup-with-headphone.png";
 import NMContainer from "@/components/ui/core/NMContainer";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -32,26 +33,23 @@ const HeroSection = () => {
                 manage properties with ease. Your ideal rental journey starts
                 here.
               </p>
-              <Button
-                size="lg"
-                className="mr-5 mb-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white"
-              >
-                Rent Now
-              </Button>
-              <Button
-                size="lg"
-                className="rounded-full bg-white text-black hover:bg-blue-500 hover:text-white"
-              >
-                All Listings
-              </Button>
+              <Link href="/listings">
+                <Button
+                  size="lg"
+                  className="mr-5 mb-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white"
+                >
+                  Rent Now
+                </Button>
+              </Link>
+              <Link href="/listings">
+                <Button
+                  size="lg"
+                  className="rounded-full bg-white text-black hover:bg-blue-500 hover:text-white"
+                >
+                  All Listings
+                </Button>
+              </Link>
             </div>
-            {/* <div className="flex items-center justify-center">
-              <Image
-                src={cupImg}
-                alt="cup with headphone"
-                className="z-10 relative"
-              />
-            </div> */}
           </div>
         </div>
       </div>
