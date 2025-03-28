@@ -4,6 +4,7 @@
 - [Project Overview](#project-overview)
 - [Server-Side Repository](#Server-Side-Repository)
 - [Live Demo](#Live-Demo)
+- [Admin Credentials](#Admin-Credentials)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Installation & Setup](#installation--setup)
