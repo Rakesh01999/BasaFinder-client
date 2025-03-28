@@ -2,6 +2,8 @@
 
 ## Table of Contents
 - [Project Overview](#project-overview)
+- [Server-Side Repository](#Server-Side-Repository)
+- [Live Demo](#Live-Demo)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Installation & Setup](#installation--setup)
@@ -13,18 +15,18 @@
 
 ---
 
+## Project Overview
+BasaFinder is a smart rental housing platform connecting landlords, tenants, and administrators. Landlords can post rental listings, tenants can search and request rentals, and an admin oversees user activities and rental listings.
+
+---
+
 ## Server-Side Repository
 - [basa-finder-server](https://github.com/Rakesh01999/basa-finder-server)
 
 ---
 
 ## Live Demo
-- [Live-Link](https://basa-finder-next.vercel.app/)
-
----
-
-## Project Overview
-BasaFinder is a smart rental housing platform connecting landlords, tenants, and administrators. Landlords can post rental listings, tenants can search and request rentals, and an admin oversees user activities and rental listings.
+- [Live-Demo](https://basa-finder-next.vercel.app/)
 
 ---
 
