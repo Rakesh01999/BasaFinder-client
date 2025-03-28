@@ -13,6 +13,13 @@
 
 ---
 
+## Server-Side Repository
+- [basa-finder-server](https://github.com/Rakesh01999/basa-finder-server)
+
+---
+
+---
+
 ## Project Overview
 BasaFinder is a smart rental housing platform connecting landlords, tenants, and administrators. Landlords can post rental listings, tenants can search and request rentals, and an admin oversees user activities and rental listings.
 
