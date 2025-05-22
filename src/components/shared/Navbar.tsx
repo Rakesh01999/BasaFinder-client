@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Menu, LogOut,  User,  LayoutDashboardIcon } from "lucide-react";
+import { Menu, LogOut, User, LayoutDashboardIcon } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
@@ -58,19 +58,33 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "About-Us", href: "/about" },
     { name: "All-Rentals", href: "/listings" },
+    { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "/blog" },
+    { name: "FAQ", href: "/faq" },
 
     ...(user ? [{ name: "Dashboard", href: `/${user.role}s/dashboard` }] : []),
-
   ];
 
   return (
     // <header className={`border-b bg-white w-full sticky top-0 z-20 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}>
-    <header className={`border-b bg-gradient-to-r from-blue-300 to-cyan-200  w-full sticky top-0 z-20 transition-all duration-300 ${scrolled ? "shadow-md" : ""}`}>
+    <header
+      className={`border-b bg-gradient-to-r from-blue-300 to-cyan-200  w-full sticky top-0 z-20 transition-all duration-300 ${
+        scrolled ? "shadow-md" : ""
+      }`}
+    >
       <div className="container flex items-center justify-between mx-auto h-16 px-4 sm:px-5">
         {/* Logo - Responsive sizing */}
         <Link href="/" className="flex items-center space-x-2">
-          <Image src={logo} alt="BasaFinder Logo" width={40} height={32} className="w-8 h-auto sm:w-10 md:w-12" />
-          <span className="text-lg sm:text-xl md:text-2xl font-bold">BasaFinder</span>
+          <Image
+            src={logo}
+            alt="BasaFinder Logo"
+            width={40}
+            height={32}
+            className="w-8 h-auto sm:w-10 md:w-12"
+          />
+          <span className="text-lg sm:text-xl md:text-2xl font-bold">
+            BasaFinder
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -110,7 +124,9 @@ export default function Navbar() {
                 <Button variant="ghost" className="rounded-full p-0 h-9 w-9">
                   <Avatar className="h-9 w-9">
                     <AvatarImage src="https://i.postimg.cc/QC0n0Jw6/user.jpg" />
-                    <AvatarFallback>{user.name?.charAt(0) || "U"}</AvatarFallback>
+                    <AvatarFallback>
+                      {user.name?.charAt(0) || "U"}
+                    </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
@@ -124,8 +140,11 @@ export default function Navbar() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href={`/${user.role}s/dashboard`} className="flex w-full cursor-pointer">
-                  <LayoutDashboardIcon className="mr-2 h-4 w-4" />
+                  <Link
+                    href={`/${user.role}s/dashboard`}
+                    className="flex w-full cursor-pointer"
+                  >
+                    <LayoutDashboardIcon className="mr-2 h-4 w-4" />
                     Dashboard
                   </Link>
                 </DropdownMenuItem>
@@ -173,7 +192,10 @@ export default function Navbar() {
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[80%] sm:w-[300px] bg-gradient-to-r from-blue-300 to-cyan-200">
+            <SheetContent
+              side="left"
+              className="w-[80%] sm:w-[300px] bg-gradient-to-r from-blue-300 to-cyan-200"
+            >
               {/* Accessibility - Visually Hidden Title */}
               <div className="sr-only">
                 <DialogTitle>Mobile Navigation Menu</DialogTitle>
@@ -181,11 +203,25 @@ export default function Navbar() {
 
               {/* Mobile Menu Header with Close Button */}
               <div className="flex items-center justify-between mb-6 pt-2 ">
-                <Link href="/" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}>
-                  <Image src={logo} alt="BasaFinder Logo" width={30} height={24} />
+                <Link
+                  href="/"
+                  className="flex items-center space-x-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Image
+                    src={logo}
+                    alt="BasaFinder Logo"
+                    width={30}
+                    height={24}
+                  />
                   <span className="text-lg font-bold">BasaFinder</span>
                 </Link>
-                <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => setIsOpen(false)}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 w-8 p-0"
+                  onClick={() => setIsOpen(false)}
+                >
                   {/* <X className="w-5 h-5" /> */}
                 </Button>
               </div>
@@ -224,7 +260,9 @@ export default function Navbar() {
                     <div className="flex items-center space-x-3 mb-2">
                       <Avatar className="h-8 w-8">
                         <AvatarImage src="https://i.postimg.cc/QC0n0Jw6/user.jpg" />
-                        <AvatarFallback>{user.name?.charAt(0) || "U"}</AvatarFallback>
+                        <AvatarFallback>
+                          {user.name?.charAt(0) || "U"}
+                        </AvatarFallback>
                       </Avatar>
                       <span className="font-medium">{user.name || "User"}</span>
                     </div>
