@@ -22,6 +22,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Menu, LogOut, User, LayoutDashboardIcon } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import { ModeToggle } from "../ui/ModeToggle";
 
 export default function Navbar() {
   const { user, setIsLoading } = useUser();
@@ -86,7 +87,7 @@ export default function Navbar() {
             BasaFinder
           </span>
         </Link>
-
+        <ModeToggle />
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-3 lg:space-x-6">
           {navLinks.map((link) => (
