@@ -12,9 +12,9 @@ const RentalListings = async () => {
   return (
     <NMContainer className="my-20">
       <div className="flex items-center justify-between">
-        <h2 className="text-3xl font-bold">Latest Listings</h2>
+        <h2 className="text-3xl font-bold text-blue-800 dark:text-blue-400">Latest Listings</h2>
         <Link href="/listings">
-          <Button variant="outline" className="rounded-full">
+          <Button variant="default" className="rounded-full text-white dark:text-white">
             View All
           </Button>
         </Link>

@@ -1,5 +1,7 @@
 
 import HeroSection from "@/components/modules/home/HeroSection";
+import HomeBlogSection from "@/components/modules/home/HomeBlogSection";
+import NewsletterSection from "@/components/modules/home/NewsletterSection";
 import RentalListings from "@/components/modules/home/RentalListings";
 import Testimonials from "@/components/modules/home/Testimonials";
 
@@ -9,6 +11,8 @@ const HomePage = async () => {
       <HeroSection />
       <RentalListings />
       <Testimonials />
+      <HomeBlogSection />
+      <NewsletterSection />
       {/* <Category />
       <FeaturedProducts />
       <FlashSale />
