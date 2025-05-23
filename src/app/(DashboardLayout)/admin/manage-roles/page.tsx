@@ -103,23 +103,23 @@ const UsersRoleManagementPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
-      <h2 className="text-2xl font-semibold mb-6 text-center">
+      <h2 className="text-2xl font-semibold mb-6 text-center dark:text-black">
         User Management
       </h2>
-      <h2 className="text-xl mb-6 text-center">Manage All Users Role</h2>
+      <h2 className="text-xl mb-6 text-center dark:text-black">Manage All Users Role</h2>
 
       {loading ? (
-        <div className="flex justify-center items-center h-40">
+        <div className="flex justify-center items-center h-40 dark:text-black">
           <Loader2 className="animate-spin mr-2 h-8 w-8 text-gray-500" />
           <p className="text-gray-500">Loading users...</p>
         </div>
       ) : users.length === 0 ? (
-        <p className="text-center text-gray-500">No users found.</p>
+        <p className="text-center text-gray-500 dark:text-black">No users found.</p>
       ) : (
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow className="font-bold md:text-lg text-center">
+              <TableRow className="font-bold md:text-lg text-center dark:hover:bg-gray-200">
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
                 <TableHead>Role</TableHead>
@@ -129,7 +129,7 @@ const UsersRoleManagementPage = () => {
             </TableHeader>
             <TableBody>
               {users.map((user) => (
-                <TableRow key={user._id}>
+                <TableRow key={user._id} className="dark:text-black dark:hover:bg-gray-200">
                   <TableCell>{user.name}</TableCell>
                   <TableCell>{user.email}</TableCell>
 
@@ -141,7 +141,7 @@ const UsersRoleManagementPage = () => {
                       }
                       disabled={user.role === "admin"}
                     >
-                      <SelectTrigger className="w-[180px]">
+                      <SelectTrigger className="w-[180px] dark:text-white">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>

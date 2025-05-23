@@ -81,7 +81,7 @@ const DeleteListings = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
+    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10 dark:text-black">
       <h2 className="text-2xl font-semibold mb-6 text-center">
         Delete Listings
       </h2>

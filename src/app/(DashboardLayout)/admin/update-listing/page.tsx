@@ -46,7 +46,7 @@ const DeleteListings = () => {
   console.log(listings);
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
+    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10 dark:text-black">
       <h2 className="text-2xl font-semibold mb-6 text-center">
         Update/Edit Listings
       </h2>
@@ -76,7 +76,7 @@ const DeleteListings = () => {
                   <TableCell>৳ {listing.rentAmount.toLocaleString()}</TableCell>
                   <TableCell>{listing.bedrooms}</TableCell>
                   <TableCell>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 dark:text-white">
                       <Button
                         variant="outline"
                         size="sm"

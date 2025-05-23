@@ -109,7 +109,7 @@ const UsersManagementPage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
+    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10 dark:text-black">
       <h2 className="text-2xl font-semibold mb-6 text-center">
         User Management
       </h2>
@@ -120,12 +120,12 @@ const UsersManagementPage = () => {
           <p className="text-gray-500">Loading users...</p>
         </div>
       ) : users.length === 0 ? (
-        <p className="text-center text-gray-500">No users found.</p>
+        <p className="text-center text-gray-500 dark:text-black">No users found.</p>
       ) : (
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow className="font-bold md:text-lg text-center">
+              <TableRow className="font-bold md:text-lg text-center dark:text-black dark:hover:bg-gray-200">
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
                 <TableHead>Role/Status</TableHead>
@@ -136,7 +136,7 @@ const UsersManagementPage = () => {
 
             <TableBody>
               {users.map((user) => (
-                <TableRow key={user._id}>
+                <TableRow key={user._id} className="dark:hover:bg-gray-200">
                   <TableCell>{user.name}</TableCell>
                   <TableCell>{user.email}</TableCell>
 
