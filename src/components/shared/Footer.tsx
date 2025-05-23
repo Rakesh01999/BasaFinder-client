@@ -10,7 +10,7 @@ const Footer = () => {
     { href: "/about", label: "About Us" },
     { href: "", label: "Testimonial" },
     { href: "/terms-of-use", label: "Terms Of Use" },
-    { href: "#", label: "Contact Us" },
+    { href: "/contact", label: "Contact Us" },
     { href: "/privacy-policy", label: "Privacy Policy" },
   ];
 
@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     // <footer className="bg-white border-t border-gray-200 py-12">
-    <footer className="bg-gradient-to-r from-blue-400 to-cyan-200 border-t border-gray-200 py-12">
+    <footer className="bg-gradient-to-r from-blue-400 to-cyan-200 border-t border-gray-200 py-12 dark:text-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Logo and Intro */}
         <div className="flex flex-col items-center text-center mb-10">

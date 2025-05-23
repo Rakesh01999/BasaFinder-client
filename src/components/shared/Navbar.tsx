@@ -93,7 +93,7 @@ export default function Navbar() {
             className="w-8 h-auto sm:w-10 md:w-12"
           />
           {/* <span className="text-lg sm:text-xl md:text-2xl font-bold"> */}
-          <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold truncate">
+          <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold truncate dark:text-black">
             BasaFinder
           </span>
         </Link>
