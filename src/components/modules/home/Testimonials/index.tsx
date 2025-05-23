@@ -75,10 +75,10 @@ const Testimonials = () => {
     <div className="py-16 px-6 ">
       {/* Section Header */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-blue-800 flex justify-center items-center gap-3">
-          <Home className="w-8 h-8 text-blue-500" /> Trusted by Happy Users
+        <h2 className="text-4xl font-bold text-blue-800 dark:text-blue-400 flex justify-center items-center gap-3">
+          <Home className="w-8 h-8 text-blue-500 dark:text-blue-400" /> Trusted by Happy Users
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg">
           Hear from our satisfied users who found their perfect home through
           Basa Finder
         </p>
@@ -92,8 +92,9 @@ const Testimonials = () => {
             className="p-6 border-l-4 border-blue-600 shadow-md hover:shadow-lg transition-transform hover:scale-105"
           >
             <CardContent>
-              <p className="text-gray-700 italic mb-4 flex items-center gap-2">
-                <Heart className="w-5 h-5 text-blue-500" /> {testimonial.quote}
+              <p className="text-gray-700 dark:text-gray-300 italic mb-4 flex items-center gap-2">
+                {/* <Heart className="w-5 h-5 text-blue-500 dark:text-blue-200" /> {testimonial.quote} */}
+                <Heart className="text-blue-500 dark:text-blue-200" /> {testimonial.quote}
               </p>
 
               {/* User Info */}
@@ -111,7 +112,7 @@ const Testimonials = () => {
                   <p className="font-semibold text-gray-900">
                     {testimonial.name}
                   </p>
-                  <p className="text-blue-600 text-sm">
+                  <p className="text-blue-600 text-sm dark:text-blue-300">
                     {testimonial.location}
                   </p>
                 </div>
@@ -142,7 +143,7 @@ const Testimonials = () => {
 
       {/* Call to Action */}
       <div className="text-center mt-12">
-        <p className="text-xl text-gray-700 mb-4">
+        <p className="text-xl text-gray-700 dark:text-gray-300 mb-4">
           Ready to find your dream home?
         </p>
         <Link href="/listings">

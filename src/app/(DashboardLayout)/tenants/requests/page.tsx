@@ -206,7 +206,7 @@ const ViewRequests = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
+    <div className="max-w-6xl mx-auto p-6 bg-white dark:bg-gray-200 dark:text-black shadow-lg rounded-lg my-10">
       <h2 className="text-2xl font-semibold mb-6">Rental Requests</h2>
 
       {loading ? (

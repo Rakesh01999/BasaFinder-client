@@ -60,11 +60,11 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
   return (
     <NMContainer className="my-20">
       {/* Search Section */}
-      <div className="bg-white p-6 rounded-xl shadow-md mb-10">
-        <h3 className="text-xl font-semibold mb-4 text-center">Search Rental Properties</h3>
+      <div className="bg-white dark:bg-gray-300 p-6 rounded-xl shadow-md mb-10">
+        <h3 className="text-xl font-semibold mb-4 text-center dark:text-black">Search Rental Properties</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Location</label>
+            <label className="block text-sm font-medium mb-1 dark:text-black">Location</label>
             <Input
               placeholder="Enter location..."
               value={location}
@@ -74,7 +74,7 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
           </div>
           
           <div>
-            <label className="block text-sm font-medium mb-1">Price Range</label>
+            <label className="block text-sm font-medium mb-1 dark:text-black">Price Range</label>
             <div className="px-2">
               <Slider
                 defaultValue={[0, 50000]}
@@ -85,7 +85,7 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
                 onValueChange={(value) => setPriceRange(value)}
                 className="mt-2"
               />
-              <div className="flex justify-between mt-2 text-sm text-gray-600">
+              <div className="flex justify-between mt-2 text-sm text-gray-600 dark:text-black">
                 <span>৳{priceRange[0].toLocaleString()}</span>
                 <span>৳{priceRange[1].toLocaleString()}</span>
               </div>
@@ -93,7 +93,7 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
           </div>
           
           <div>
-            <label className="block text-sm font-medium mb-1">Bedrooms</label>
+            <label className="block text-sm font-medium mb-1 dark:text-black">Bedrooms</label>
             <Select value={bedrooms} onValueChange={(value) => setBedrooms(value)}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Any" />
@@ -120,7 +120,7 @@ const RentalListings: React.FC<RentalListingsProps> = ({ initialListings }) => {
             <Button 
               onClick={handleReset} 
               variant="outline" 
-              className="border-blue-300 text-blue-600"
+              className="border-blue-300 text-blue-600 dark:text-white"
             >
               Reset
             </Button>

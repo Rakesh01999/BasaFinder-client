@@ -10,7 +10,7 @@ import {
 export default function FAQPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20">
-      <h1 className="text-4xl font-bold text-center mb-10">Frequently Asked Questions</h1>
+      <h1 className="text-4xl font-bold text-center mb-10 text-blue-600 dark:text-blue-400">Frequently Asked Questions</h1>
 
       <Accordion type="single" collapsible className="w-full space-y-4">
         <AccordionItem value="item-1">

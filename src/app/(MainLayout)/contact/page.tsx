@@ -53,7 +53,7 @@ export default function ContactPage() {
 
   return (
     <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-center mb-6 text-blue-800">Contact Us</h1>
+      <h1 className="text-3xl font-bold text-center mb-6 text-blue-600 dark:text-blue-400">Contact Us</h1>
       <Card className="max-w-2xl mx-auto p-6 shadow-lg bg-white">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div>
@@ -79,9 +79,9 @@ export default function ContactPage() {
 
       {/* ✅ Contact & Social Links */}
       <div className="max-w-2xl mx-auto mt-10 text-center space-y-4">
-        <h2 className="text-xl font-semibold text-gray-800">You can also reach us via:</h2>
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-300">You can also reach us via:</h2>
 
-        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center text-blue-700 text-lg">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center text-blue-700 text-lg dark:text-blue-300">
           <a
             href="https://www.facebook.com/rakeshbiswas.biswas.9843/"
             target="_blank"
@@ -109,7 +109,7 @@ export default function ContactPage() {
             <FaTelegram className="text-xl" /> Telegram
           </a>
 
-          <div className="flex items-center gap-2 text-gray-700">
+          <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
             <FaPhone className="text-xl" /> Hotline: +8801999647103
           </div>
         </div>

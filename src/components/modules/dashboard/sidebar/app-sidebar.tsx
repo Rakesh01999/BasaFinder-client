@@ -285,13 +285,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <Link href="/">
-                <div className="flex items-center justify-center">
+            <SidebarMenuButton size="lg" asChild >
+              <Link href="/" className="dark:hover:bg-gray-300">
+                <div className="flex items-center justify-center ">
                   <Logo />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <h2 className="font-bold text-xl">Basa Finder</h2>
+                  <h2 className="font-bold text-xl dark:text-black ">Basa Finder</h2>
                 </div>
               </Link>
             </SidebarMenuButton>
