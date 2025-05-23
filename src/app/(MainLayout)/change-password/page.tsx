@@ -11,7 +11,7 @@ import { Card } from "@/components/ui/card";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { changePassword } from "@/services/Users";
 
-// ✅ Zod Schema for Validation
+// Zod Schema for Validation
 const passwordSchema = z.object({
   oldPassword: z.string().min(6, "Old password must be at least 6 characters"),
   newPassword: z.string().min(6, "New password must be at least 6 characters"),
@@ -30,14 +30,14 @@ const ChangePassword = () => {
     defaultValues: { 
       oldPassword: "", 
       newPassword: "" 
-    }, // ✅ Ensure fields are controlled from the start
+    }, // Ensure fields are controlled from the start
   });
 
   const [loading, setLoading] = useState(false);
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
 
-  // ✅ Handle Password Change Submission
+  // Handle Password Change Submission
   const onSubmit = async (data: PasswordFormValues) => {
     setLoading(true);
     const toastId = toast.loading("Updating password...");
@@ -47,7 +47,7 @@ const ChangePassword = () => {
 
       if (res.success) {
         toast.success("Password updated successfully!", { id: toastId });
-        reset(); // ✅ Reset form after success
+        reset(); //  Reset form after success
       } else {
         toast.error(res.message || "Failed to change password", { id: toastId });
       }
@@ -63,7 +63,7 @@ const ChangePassword = () => {
     <div className="flex justify-center items-center min-h-screen p-4">
       <Card className="w-full max-w-md shadow-lg p-6 rounded-lg">
         <h2 className="text-2xl font-semibold text-center mb-4">Change Password</h2>
-        <p className="text-center text-gray-600 mb-6">Secure your account with a new password.</p>
+        <p className="text-center text-gray-600 dark:text-blue-300 mb-6">Secure your account with a new password.</p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Old Password */}

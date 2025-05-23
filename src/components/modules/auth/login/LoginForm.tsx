@@ -83,14 +83,14 @@ export default function LoginForm() {
             height={32}
             className="w-8 h-auto sm:w-10 md:w-12"
           />
-          <span className="text-lg sm:text-xl md:text-2xl font-bold">
+          <span className="text-lg sm:text-xl md:text-2xl font-bold dark:text-black">
             BasaFinder
           </span>
         </Link>
 
         <div>
-          <h1 className="text-xl font-semibold text-center">Login</h1>
-          <p className="font-extralight text-sm text-gray-600">Welcome back!</p>
+          <h1 className="text-xl font-semibold text-center dark:text-black">Login</h1>
+          <p className="font-extralight text-sm text-gray-600 dark:text-black">Welcome back!</p>
         </div>
       </div>
       <Form {...form}>
@@ -100,7 +100,7 @@ export default function LoginForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="dark:text-black">Email</FormLabel>
                 <FormControl>
                   <Input type="email" {...field} value={field.value || ""} />
                 </FormControl>
@@ -115,7 +115,7 @@ export default function LoginForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel className="dark:text-black">Password</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input

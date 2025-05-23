@@ -222,18 +222,18 @@ const EditListing = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
-      <h2 className="text-2xl font-semibold mb-6">Edit Listing</h2>
+      <h2 className="text-2xl font-semibold mb-6 dark:text-black">Edit Listing</h2>
 
       {loading ? (
-        <div className="flex justify-center items-center h-40">
+        <div className="flex justify-center items-center h-40 dark:text-black">
           <Loader2 className="animate-spin mr-2 h-8 w-8 text-gray-500" />
-          <p className="text-gray-500">Loading listing details...</p>
+          <p className="text-gray-500 ">Loading listing details...</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Location */}
           <div>
-            <Label>Location</Label>
+            <Label className="dark:text-black">Location</Label>
             <Input
               type="text"
               name="location"
@@ -248,7 +248,7 @@ const EditListing = () => {
 
           {/* Description */}
           <div>
-            <Label>Description</Label>
+            <Label className="dark:text-black">Description</Label>
             <Textarea
               name="description"
               value={listingData.description}
@@ -262,7 +262,7 @@ const EditListing = () => {
 
           {/* Rent Amount */}
           <div>
-            <Label>Rent Amount</Label>
+            <Label className="dark:text-black">Rent Amount</Label>
             <Input
               type="number"
               name="rentAmount"
@@ -277,7 +277,7 @@ const EditListing = () => {
 
           {/* Bedrooms */}
           <div>
-            <Label>Number of Bedrooms</Label>
+            <Label className="dark:text-black">Number of Bedrooms</Label>
             <Select
               value={listingData.bedrooms}
               onValueChange={(value) => {
@@ -355,7 +355,7 @@ const EditListing = () => {
             )}
           </div> */}
           <div>
-            <Label>Amenities</Label>
+            <Label className="dark:text-black">Amenities</Label>
             <div className="mt-2">
               <div className="flex flex-wrap gap-2">
                 {amenitiesOptions.map((amenity) => {

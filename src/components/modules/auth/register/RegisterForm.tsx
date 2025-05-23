@@ -76,7 +76,7 @@ export default function RegisterForm() {
             height={32}
             className="w-8 h-auto sm:w-10 md:w-12"
           />
-          <span className="text-lg sm:text-xl md:text-2xl font-bold">
+          <span className="text-lg sm:text-xl md:text-2xl font-bold dark:text-black">
             BasaFinder
           </span>
         </Link>
@@ -86,7 +86,7 @@ export default function RegisterForm() {
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 dark:text-black">
           <FormField
             control={form.control}
             name="name"

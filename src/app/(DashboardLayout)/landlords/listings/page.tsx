@@ -245,7 +245,7 @@ const CreateRentalListing = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md my-10">
+    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md my-10 dark:text-black">
       <h2 className="text-3xl font-semibold mb-6 text-center">
         Create/Post a New Listing
       </h2>

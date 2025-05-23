@@ -29,6 +29,7 @@ const blueColors = {
   primary: "#1E3A8A", // Deep Blue
   secondary: "#2563EB", // Vibrant Blue
   background: "#EFF6FF", // Light Blue
+  dark: "#60A5FA",
 };
 
 const UpdateProfile = () => {
@@ -137,20 +138,22 @@ const UpdateProfile = () => {
           <div className="text-center mb-6 sm:mb-8">
             <div
               className="mx-auto mb-4 sm:mb-6 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-cyan-300"
-              style={{
-                // background: `linear-gradient(135deg, ${blueColors.primary} 0%, ${blueColors.secondary} 100%)`,
-                // background: `bg-gradient-to-r from-blue-300 to-cyan-200`,
-              }}
+              style={
+                {
+                  // background: `linear-gradient(135deg, ${blueColors.primary} 0%, ${blueColors.secondary} 100%)`,
+                  // background: `bg-gradient-to-r from-blue-300 to-cyan-200`,
+                }
+              }
             >
               <User className="text-white w-10 h-10 sm:w-12 sm:h-12" />
             </div>
             <h2
-              className="text-center mb-2 text-2xl sm:text-3xl font-semibold"
-              style={{ color: blueColors.primary }}
+              className="text-center mb-2 text-2xl sm:text-3xl font-semibold "
+              // style={{ color: blueColors.primary }}
             >
               Update Profile
             </h2>
-            <p className="text-center block text-sm sm:text-base text-blue-600">
+            <p className="text-center block text-sm sm:text-base text-blue-600 dark:text-blue-400">
               Keep your profile information up-to-date
             </p>
           </div>
@@ -160,7 +163,7 @@ const UpdateProfile = () => {
             <div className="space-y-2">
               <label
                 className="font-medium text-sm sm:text-base block"
-                style={{ color: blueColors.primary }}
+                // style={{ color: blueColors.primary }}
               >
                 Full Name
               </label>
@@ -189,7 +192,7 @@ const UpdateProfile = () => {
             <div className="space-y-2">
               <label
                 className="font-medium text-sm sm:text-base block"
-                style={{ color: blueColors.primary }}
+                // style={{ color: blueColors.primary }}
               >
                 Email Address
               </label>
@@ -219,7 +222,7 @@ const UpdateProfile = () => {
             <div className="space-y-2">
               <label
                 className="font-medium text-sm sm:text-base block"
-                style={{ color: blueColors.primary }}
+                // style={{ color: blueColors.primary }}
               >
                 Phone Number
               </label>
@@ -250,7 +253,7 @@ const UpdateProfile = () => {
             <div className="space-y-2">
               <label
                 className="font-medium text-sm sm:text-base block"
-                style={{ color: blueColors.primary }}
+                // style={{ color: blueColors.primary }}
               >
                 Address
               </label>
