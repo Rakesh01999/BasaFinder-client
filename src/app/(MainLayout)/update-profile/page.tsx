@@ -137,7 +137,7 @@ const UpdateProfile = () => {
         <CardContent className="pt-6 pb-8 px-6">
           <div className="text-center mb-6 sm:mb-8">
             <div
-              className="mx-auto mb-4 sm:mb-6 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-cyan-300"
+              className="mx-auto mb-4 sm:mb-6 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-blue-300"
               style={
                 {
                   // background: `linear-gradient(135deg, ${blueColors.primary} 0%, ${blueColors.secondary} 100%)`,

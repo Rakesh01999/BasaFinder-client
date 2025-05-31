@@ -44,11 +44,11 @@ const ProfilePage = () => {
   }
 
   return (
-    <NMContainer className="max-w-4xl mx-auto my-10 p-8 bg-gradient-to-r from-blue-300 to-cyan-200 shadow-lg rounded-3xl">
+    <NMContainer className="max-w-4xl mx-auto my-10 p-8 bg-gradient-to-r from-blue-400 to-blue-200 shadow-lg rounded-3xl">
       <div className="flex flex-col md:flex-row items-center md:space-x-8 space-y-6 md:space-y-0">
         <Avatar className="w-24 h-24 md:w-32 md:h-32 border-4 border-blue-500">
-          {/* <AvatarImage src={userData.profileImg || "/user-placeholder.jpg"} /> */}
-          <AvatarImage src={userData.profileImg || "https://i.postimg.cc/QxnWx7KH/user-placeholder.jpg"} />
+          {/* <AvatarImage src={userData.profileImg || "https://i.postimg.cc/QxnWx7KH/user-placeholder.jpg"} /> */}
+          <AvatarImage src={userData.profileImg || "https://i.postimg.cc/qq682vQQ/user-photo.png"} />
           <AvatarFallback>{userData.name[0]}</AvatarFallback>
         </Avatar>
         <div className="text-center md:text-left">
