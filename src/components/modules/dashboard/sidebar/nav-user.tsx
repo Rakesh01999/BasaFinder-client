@@ -28,13 +28,14 @@ export function NavUser() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
     setIsLoading(true);
+    await logout();
 
     if (protectedRoutes.some((route) => pathname.match(route))) {
       router.push("/");
     }
+    window.location.reload();
   };
 
   return (
