@@ -17,7 +17,7 @@ interface ListingCardProps {
 
 const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
   return (
-    <div className="border rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-300 hover:shadow-2xl transition-all duration-300">
+    <div className="border rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-300 dark:hover:shadow-gray-400 hover:shadow-2xl transition-all duration-300">
       <div className="relative w-full h-56">
         <Image
           src={

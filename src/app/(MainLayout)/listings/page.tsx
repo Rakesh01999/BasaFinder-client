@@ -237,7 +237,8 @@ const RentalListings: React.FC<RentalListingsProps> = ({
         
         {/* Items per page selector */}
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600 dark:text-gray-400">Show:</span>
+          {/* <span className="text-sm text-gray-600 dark:text-gray-400">Show:</span> */}
+          <span className="text-sm text-gray-600 dark:text-gray-200">Show:</span>
           <Select
             value={itemsPerPage.toString()}
             onValueChange={(value) => {
@@ -246,7 +247,7 @@ const RentalListings: React.FC<RentalListingsProps> = ({
               setCurrentPage(1); // Reset to first page when changing items per page
             }}
           >
-            <SelectTrigger className="w-20">
+            <SelectTrigger className="w-20 border-gray-500 dark:border-gray-300">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -294,9 +295,9 @@ const RentalListings: React.FC<RentalListingsProps> = ({
 
       {/* Pagination */}
       {!isLoading && filteredListings.length > 0 && totalPages > 1 && (
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-2 md:gap-4">
           {/* Pagination Info */}
-          <div className="text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-sm text-gray-600 dark:text-gray-200">
             Page {currentPage} of {totalPages}
           </div>
 
@@ -353,13 +354,13 @@ const RentalListings: React.FC<RentalListingsProps> = ({
 
           {/* Jump to Page */}
           <div className="flex items-center gap-2 text-sm">
-            <span className="text-gray-600 dark:text-gray-400">Go to:</span>
+            <span className="text-gray-600 dark:text-gray-300">Go to:</span>
             <Input
               type="number"
               min={1}
               max={totalPages}
               placeholder="Page"
-              className="w-16 h-8 text-center"
+              className="w-16 md:w-20 h-8 text-center border-gray-500 dark:border-gray-300"
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const page = parseInt((e.target as HTMLInputElement).value);
