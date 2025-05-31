@@ -1,5 +1,4 @@
 import logo from "@/assets/logo.png";
-// import { Facebook, Instagram, X } from "lucide-react";
 import { FaFacebook, FaWhatsapp, FaTelegram, FaPhone } from "react-icons/fa";
 
 import Image from "next/image";
@@ -23,13 +22,13 @@ const Footer = () => {
   ];
 
   return (
-    // <footer className="bg-white border-t border-gray-200 py-12">
-    <footer className="bg-gradient-to-r from-blue-400 to-cyan-200 border-t border-gray-200 py-12 dark:text-black">
+    // <footer className="bg-gradient-to-r from-blue-400 to-cyan-200 border-t border-gray-200 py-12 dark:text-black">
+    <footer className="bg-gray-700 border-t border-gray-200 py-12 text-gray-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Logo and Intro */}
         <div className="flex flex-col items-center text-center mb-10">
           <div className="flex items-center gap-2">
-            <Image src={logo} alt="BasaFinder Logo" width={50} height={40} />
+            <Image src={logo} alt="BasaFinder Logo" width={50} height={40} className="bg-blue-300 rounded-full " />
             <h1 className="text-2xl font-bold">BasaFinder</h1>
           </div>
           <p className=" mt-3 max-w-md text-sm">
@@ -40,10 +39,10 @@ const Footer = () => {
 
         {/* Navigation Links */}
         <nav className="mb-8">
-          <ul className="flex flex-wrap justify-center gap-6 text-sm text-gray-800 font-medium">
+          <ul className="flex flex-wrap justify-center gap-6 text-sm text-gray-200 font-medium">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-blue-500 transition-all">
+                <Link href={link.href} className="hover:text-blue-300 transition-all">
                   {link.label}
                 </Link>
               </li>
@@ -58,7 +57,7 @@ const Footer = () => {
               href={href}
               key={index}
               target="_blank"
-              className="text-gray-600 hover:text-blue-500 transition-all"
+              className="text-gray-300 hover:text-blue-300 transition-all"
             >
               <Icon className="w-5 h-5" />
             </Link>

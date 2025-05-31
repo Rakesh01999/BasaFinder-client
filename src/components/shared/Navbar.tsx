@@ -260,10 +260,17 @@ export default function Navbar() {
   ];
 
   return (
+    // <header
+    //   className={`border-b border-white/20 bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300 w-full sticky top-0 z-20 transition-all duration-500 backdrop-blur-sm ${
+    //     scrolled
+    //       ? "shadow-lg shadow-blue-200/20 bg-gradient-to-r from-blue-400/95 via-blue-300/95 to-cyan-300/95"
+    //       : ""
+    //   }`}
+    // >
     <header
-      className={`border-b border-white/20 bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300 w-full sticky top-0 z-20 transition-all duration-500 backdrop-blur-sm ${
+      className={`border-b border-white/20 bg-blue-300 w-full sticky top-0 z-20 transition-all duration-500 backdrop-blur-sm ${
         scrolled
-          ? "shadow-lg shadow-blue-200/20 bg-gradient-to-r from-blue-400/95 via-blue-300/95 to-cyan-300/95"
+          ? "shadow-lg shadow-blue-200/20 bg-blue-400/95 "
           : ""
       }`}
     >
@@ -325,7 +332,7 @@ export default function Navbar() {
                   >
                     <Avatar className="h-10 w-10 xl:h-12 xl:w-12">
                       <AvatarImage src="https://i.postimg.cc/QC0n0Jw6/user.jpg" />
-                      <AvatarFallback className="text-sm xl:text-base font-semibold bg-gradient-to-br from-blue-500 to-cyan-500 text-white">
+                      <AvatarFallback className="text-sm xl:text-base font-semibold bg-blue-500 text-white">
                         {user.name?.charAt(0) || "U"}
                       </AvatarFallback>
                     </Avatar>
@@ -400,7 +407,7 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent
                 side="top"
-                className="h-auto bg-gradient-to-r from-blue-400 to-cyan-300 border-none"
+                className="h-auto bg-blue-400 border-none"
               >
                 <div className="sr-only">
                   <DialogTitle>Mobile Search</DialogTitle>
@@ -443,7 +450,7 @@ export default function Navbar() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[90%] sm:w-[80%] max-w-sm bg-gradient-to-br from-blue-400 via-blue-300 to-cyan-300 border-none p-0"
+                className="w-[90%] sm:w-[80%] max-w-sm bg-blue-300 border-none p-0"
               >
                 <div className="sr-only">
                   <DialogTitle>Mobile Navigation Menu</DialogTitle>
@@ -500,7 +507,7 @@ export default function Navbar() {
                         <div className="flex items-center space-x-4 p-4 bg-white/20 rounded-xl">
                           <Avatar className="h-12 w-12 ring-2 ring-white/30">
                             <AvatarImage src="https://i.postimg.cc/QC0n0Jw6/user.jpg" />
-                            <AvatarFallback className="text-sm font-semibold bg-gradient-to-br from-blue-500 to-cyan-500 text-white">
+                            <AvatarFallback className="text-sm font-semibold bg-blue-500 text-white">
                               {user.name?.charAt(0) || "U"}
                             </AvatarFallback>
                           </Avatar>

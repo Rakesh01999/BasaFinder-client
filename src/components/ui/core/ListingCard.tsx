@@ -66,7 +66,8 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
         </div>
         {/* <Link href='listingId'> */}
         <Link href={`/listings/${listing?.id}`} passHref>
-          <Button className="w-full bg-gradient-to-r from-blue-700 to-cyan-500 text-white rounded-full hover:opacity-90">
+          {/* <Button className="w-full bg-gradient-to-r from-blue-700 to-cyan-500 text-white rounded-full hover:opacity-90"> */}
+          <Button className="w-full text-white rounded-full hover:opacity-90">
             View Details
           </Button>
         </Link>

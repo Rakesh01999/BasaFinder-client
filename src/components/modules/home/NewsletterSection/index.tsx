@@ -56,7 +56,7 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="w-full py-16 bg-gradient-to-r from-blue-200 via-cyan-100 to-blue-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition">
+    <section className="w-full py-16 bg-gradient-to-r from-blue-200 via-blue-50 to-blue-200 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 transition">
       <div className="container mx-auto px-4 text-center">
         {/* <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900 dark:text-blue-400 flex flex-col md:flex-row gap-2">
           <span>Stay Updated with BasaFinder </span>
