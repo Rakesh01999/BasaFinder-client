@@ -531,7 +531,8 @@ export default function Navbar() {
                         </Link>
 
                         <Link
-                          href={`/${user.role}s/dashboard`}
+                          // href={`/${user.role}s/dashboard`}
+                          href={user ? (user.role === "admin" ? `/${user.role}/dashboard` : `/${user.role}s/dashboard`) : "#"}
                           className="flex items-center px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-white/20 rounded-xl transition-all duration-300"
                           onClick={() => setIsOpen(false)}
                         >

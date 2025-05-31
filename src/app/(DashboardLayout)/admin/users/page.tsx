@@ -12,8 +12,8 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getAllUsers,  } from "@/services/Admin"; // Adjust import path as needed
-import { blockUser, activateUser } from "@/services/Users"; // Adjust import path as needed
+import { getAllUsers,  } from "@/services/Admin"; 
+import { blockUser, activateUser } from "@/services/Users";
 import { toast } from "sonner";
 import { Loader2,  Lock, Unlock } from "lucide-react";
 

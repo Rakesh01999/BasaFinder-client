@@ -24,9 +24,9 @@ const HeroSection = () => {
                 <br />
                 Simplified with{" "}
                 {/* <span className="text-blue-400">BasaFinder</span> */}
-                <li className="text-blue-400">
+                <li className="text-cyan-100">
                   Basa
-                  <span className="text-cyan-200">Finder</span>
+                  <span className="text-blue-400">Finder</span>
                 </li>
               </h1>
               <p className="mt-4 text-gray-200 text-sm md:text-base">
