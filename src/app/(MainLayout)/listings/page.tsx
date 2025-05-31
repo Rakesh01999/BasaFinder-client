@@ -16,6 +16,7 @@ import NMContainer from "@/components/ui/core/NMContainer";
 import { getAllListings } from "@/services/Listings";
 import { TRentalListing } from "@/types";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type ListingWithId = TRentalListing & { _id: string };
 
@@ -33,9 +34,21 @@ const RentalListings: React.FC<RentalListingsProps> = ({
   const [bedrooms, setBedrooms] = useState("any");
   const [filteredListings, setFilteredListings] =
     useState<ListingWithId[]>(initialListings);
+  
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+  
+  // Calculate pagination values
+  const totalItems = filteredListings.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentListings = filteredListings.slice(startIndex, endIndex);
 
   useEffect(() => {
     setFilteredListings(initialListings);
+    setCurrentPage(1); // Reset to first page when initialListings change
   }, [initialListings]);
 
   const handleSearch = () => {
@@ -55,6 +68,7 @@ const RentalListings: React.FC<RentalListingsProps> = ({
     });
 
     setFilteredListings(filtered);
+    setCurrentPage(1); // Reset to first page after search
   };
 
   const handleReset = () => {
@@ -62,6 +76,71 @@ const RentalListings: React.FC<RentalListingsProps> = ({
     setPriceRange([0, 50000]);
     setBedrooms("any");
     setFilteredListings(initialListings);
+    setCurrentPage(1); // Reset to first page after reset
+  };
+
+  // Pagination handlers
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Scroll to top when page changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      handlePageChange(currentPage + 1);
+    }
+  };
+
+  // Generate page numbers for pagination
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const maxVisiblePages = 5;
+    
+    if (totalPages <= maxVisiblePages) {
+      // Show all pages if total pages is less than or equal to maxVisiblePages
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      // Show pages with ellipsis logic
+      if (currentPage <= 3) {
+        // Show first 4 pages + ellipsis + last page
+        for (let i = 1; i <= 4; i++) {
+          pageNumbers.push(i);
+        }
+        if (totalPages > 5) {
+          pageNumbers.push('...');
+          pageNumbers.push(totalPages);
+        }
+      } else if (currentPage >= totalPages - 2) {
+        // Show first page + ellipsis + last 4 pages
+        pageNumbers.push(1);
+        if (totalPages > 5) {
+          pageNumbers.push('...');
+        }
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pageNumbers.push(i);
+        }
+      } else {
+        // Show first page + ellipsis + current-1, current, current+1 + ellipsis + last page
+        pageNumbers.push(1);
+        pageNumbers.push('...');
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pageNumbers.push(i);
+        }
+        pageNumbers.push('...');
+        pageNumbers.push(totalPages);
+      }
+    }
+    
+    return pageNumbers;
   };
 
   return (
@@ -145,24 +224,54 @@ const RentalListings: React.FC<RentalListingsProps> = ({
         </div>
       </div>
 
-      {/* Listings Header */}
-      <div className="flex items-center justify-between">
-        <h2 className="text-3xl font-bold">All Listings</h2>
+      {/* Listings Header with Results Count */}
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-3xl font-bold">All Listings</h2>
+          {!isLoading && (
+            <p className="text-gray-600 dark:text-gray-400 mt-1">
+              Showing {startIndex + 1}-{Math.min(endIndex, totalItems)} of {totalItems} results
+            </p>
+          )}
+        </div>
+        
+        {/* Items per page selector */}
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-600 dark:text-gray-400">Show:</span>
+          <Select
+            value={itemsPerPage.toString()}
+            onValueChange={(value) => {
+              const newItemsPerPage = parseInt(value);
+              setItemsPerPage(newItemsPerPage);
+              setCurrentPage(1); // Reset to first page when changing items per page
+            }}
+          >
+            <SelectTrigger className="w-20">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="4">4</SelectItem>
+              <SelectItem value="8">8</SelectItem>
+              <SelectItem value="12">12</SelectItem>
+              <SelectItem value="16">16</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       {/* Listings Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {isLoading ? (
-          Array.from({ length: 8 }).map((_, idx) => (
+          Array.from({ length: itemsPerPage }).map((_, idx) => (
             <Skeleton
               key={idx}
               className="h-64 w-full rounded-xl bg-gray-200 dark:bg-gray-700"
             />
           ))
-        ) : filteredListings.length > 0 ? (
-          filteredListings.map((listing: ListingWithId, idx: number) => (
+        ) : currentListings.length > 0 ? (
+          currentListings.map((listing: ListingWithId, idx: number) => (
             <ListingCard
-              key={idx}
+              key={listing._id}
               listing={{
                 id: listing._id,
                 location: listing.location,
@@ -182,6 +291,88 @@ const RentalListings: React.FC<RentalListingsProps> = ({
           </div>
         )}
       </div>
+
+      {/* Pagination */}
+      {!isLoading && filteredListings.length > 0 && totalPages > 1 && (
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Pagination Info */}
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            Page {currentPage} of {totalPages}
+          </div>
+
+          {/* Pagination Controls */}
+          <div className="flex items-center gap-1">
+            {/* Previous Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handlePrevious}
+              disabled={currentPage === 1}
+              className="flex items-center gap-1"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Previous
+            </Button>
+
+            {/* Page Numbers */}
+            <div className="flex items-center gap-1 mx-2">
+              {getPageNumbers().map((pageNum, index) => (
+                <React.Fragment key={index}>
+                  {pageNum === '...' ? (
+                    <span className="px-2 py-1 text-gray-500">...</span>
+                  ) : (
+                    <Button
+                      variant={currentPage === pageNum ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => handlePageChange(pageNum as number)}
+                      className={`min-w-[40px] ${
+                        currentPage === pageNum
+                          ? "bg-blue-600 text-white hover:bg-blue-700"
+                          : ""
+                      }`}
+                    >
+                      {pageNum}
+                    </Button>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+
+            {/* Next Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="flex items-center gap-1"
+            >
+              Next
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+
+          {/* Jump to Page */}
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-gray-600 dark:text-gray-400">Go to:</span>
+            <Input
+              type="number"
+              min={1}
+              max={totalPages}
+              placeholder="Page"
+              className="w-16 h-8 text-center"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  const page = parseInt((e.target as HTMLInputElement).value);
+                  if (page >= 1 && page <= totalPages) {
+                    handlePageChange(page);
+                    (e.target as HTMLInputElement).value = '';
+                  }
+                }
+              }}
+            />
+          </div>
+        </div>
+      )}
     </NMContainer>
   );
 };
