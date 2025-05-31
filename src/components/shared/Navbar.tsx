@@ -251,7 +251,12 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
     { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/faq" },
-    ...(user ? [{ name: "Dashboard", href: `/${user.role}s/dashboard` }] : []),
+    // ...(user ? [{ name: "Dashboard", href: `/${user.role}s/dashboard` }] : []),
+    ...(user
+      ? user.role === "admin"
+        ? [{ name: "Dashboard", href: `/${user.role}/dashboard` }]
+        : [{ name: "Dashboard", href: `/${user.role}s/dashboard` }]
+      : []),
   ];
 
   return (
