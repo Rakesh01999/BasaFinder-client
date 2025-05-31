@@ -86,7 +86,10 @@ export default function RegisterForm() {
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 dark:text-black">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 dark:text-black"
+        >
           <FormField
             control={form.control}
             name="name"
@@ -196,11 +199,19 @@ export default function RegisterForm() {
                   className="flex gap-6"
                 >
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="tenant" id="tenant" />
+                    <RadioGroupItem
+                      value="tenant"
+                      id="tenant"
+                      className="border-black"
+                    />
                     <Label htmlFor="tenant">Tenant</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="landlord" id="landlord" />
+                    <RadioGroupItem
+                      value="landlord"
+                      id="landlord"
+                      className="border-black"
+                    />
                     <Label htmlFor="landlord">Landlord</Label>
                   </div>
                 </RadioGroup>
@@ -217,13 +228,13 @@ export default function RegisterForm() {
 
       <p className="text-sm text-gray-600 text-center my-3">
         Already have an account?
-        <Link href="/login" className="text-primary">
+        <Link href="/login" className="text-blue-800">
           Login
         </Link>
       </p>
       <p className="text-sm text-gray-600 text-center my-3">
         Go to{" "}
-        <Link href="/" className="text-primary">
+        <Link href="/" className="text-blue-700">
           Home
         </Link>
       </p>

@@ -32,17 +32,19 @@ const teamMembers = [
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-50 min-h-screen w-full">
+    // <div className="bg-gray-50 min-h-screen w-full">
+    <div className="min-h-screen w-full">
       {/* Mission Statement Section */}
-      <section className="bg-white shadow-lg">
+      {/* <section className="bg-white shadow-lg"> */}
+      <section className="shadow-lg">
         <div className="container mx-auto px-4 py-16 text-center max-w-4xl">
           <div className="flex justify-center mb-6">
             <Target className="text-blue-600 w-12 h-12 md:w-16 md:h-16" />
           </div>
-          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-6">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-4 md:mb-6">
             Our Mission at BasaFinder
           </h1>
-          <p className="text-base md:text-xl text-gray-600 leading-relaxed px-2 md:px-0">
+          <p className="text-base md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed px-2 md:px-0">
             BasaFinder is revolutionizing the rental experience in Bangladesh by
             bridging the gap between landlords and tenants. We aim to simplify
             property discovery, streamline rental processes, and create
@@ -53,9 +55,10 @@ const AboutUs = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      {/* <section className="py-12 md:py-16 bg-gray-50"> */}
+      <section className="py-12 md:py-16 ">
         <div className="container mx-auto px-4 ">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 dark:text-gray-300 mb-8 md:mb-12">
             Meet Our Team
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 ">
@@ -126,15 +129,16 @@ const AboutUs = () => {
       </section>
 
       {/* Value Proposition */}
-      <section className="bg-white py-12 md:py-16">
+      {/* <section className="bg-white py-12 md:py-16"> */}
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <div className="flex justify-center mb-6">
             <Building className="text-blue-600 w-10 h-10 md:w-16 md:h-16" />
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-300 mb-4 md:mb-6">
             Why Choose BasaFinder?
           </h2>
-          <p className="text-base md:text-xl text-gray-600 leading-relaxed px-2 md:px-0">
+          <p className="text-base md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed px-2 md:px-0">
             We believe in making rental experiences seamless, transparent, and
             empowering. Our platform combines cutting-edge technology with deep
             local market understanding to help you find not just a house, but a

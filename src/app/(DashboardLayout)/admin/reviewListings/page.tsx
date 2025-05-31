@@ -16,7 +16,6 @@ import { IUser, TRentalListing } from "@/types";
 import { getSingleUser } from "@/services/Users";
 
 const ReviewListings = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
   type ListingWithId = TRentalListing & { _id: string; landlordId: string };
   const [listings, setListings] = useState<ListingWithId[]>([]);
@@ -46,7 +45,6 @@ const ReviewListings = () => {
           if (!landlords[listing.landlordId]) {
             try {
               const response = await getSingleUser(listing.landlordId);
-              // Extract the user data from the response
               landlordData[listing.landlordId] = response.data;
             } catch (error) {
               console.error("Error fetching landlord details:", error);
@@ -62,8 +60,8 @@ const ReviewListings = () => {
   }, [listings, landlords]);
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10 dark:text-black">
-      <h2 className="text-2xl font-semibold mb-6 text-center">All Listings Overview</h2>
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 bg-white shadow-md rounded-lg my-6 dark:text-black">
+      <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4">All Listings Overview</h2>
 
       {loading ? (
         <p className="text-center text-gray-500 flex items-center justify-center">
@@ -74,9 +72,9 @@ const ReviewListings = () => {
         <p className="text-center text-gray-500">No listings found.</p>
       ) : (
         <div className="overflow-x-auto">
-          <Table>
+          <Table className="min-w-[800px] text-sm sm:text-base">
             <TableHeader>
-              <TableRow>
+              <TableRow className="dark:hover:bg-gray-100">
                 <TableHead>Location</TableHead>
                 <TableHead>Rent Amount</TableHead>
                 <TableHead>Bedrooms</TableHead>
@@ -90,7 +88,7 @@ const ReviewListings = () => {
             </TableHeader>
             <TableBody>
               {listings.map((listing) => (
-                <TableRow key={listing._id}>
+                <TableRow key={listing._id} className="hover:bg-gray-50">
                   <TableCell>{listing.location}</TableCell>
                   <TableCell>৳ {listing.rentAmount.toLocaleString()}</TableCell>
                   <TableCell>{listing.bedrooms}</TableCell>
@@ -110,22 +108,6 @@ const ReviewListings = () => {
                   <TableCell>
                     {landlords[listing.landlordId]?.phone_number || "N/A"}
                   </TableCell>
-
-                  {/* <TableCell>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() =>
-                          router.push(`/admin/update-listing/edit/${listing._id}`)
-                        }
-                      >
-                        <Edit size={16} className="mr-1" />
-                        Edit
-                      </Button>
-                    </div>
-                  </TableCell>
-                   */}
                 </TableRow>
               ))}
             </TableBody>

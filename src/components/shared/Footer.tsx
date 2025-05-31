@@ -1,5 +1,7 @@
 import logo from "@/assets/logo.png";
-import { Facebook, Instagram, X } from "lucide-react";
+// import { Facebook, Instagram, X } from "lucide-react";
+import { FaFacebook, FaWhatsapp, FaTelegram, FaPhone } from "react-icons/fa";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,16 +10,16 @@ const Footer = () => {
     { href: "/", label: "Home" },
     { href: "/listings", label: "Listings" },
     { href: "/about", label: "About Us" },
-    { href: "", label: "Testimonial" },
+    // { href: "/", label: "Testimonial" },
     { href: "/terms-of-use", label: "Terms Of Use" },
     { href: "/contact", label: "Contact Us" },
     { href: "/privacy-policy", label: "Privacy Policy" },
   ];
 
   const socialLinks = [
-    { href: "#", icon: Facebook },
-    { href: "#", icon: Instagram },
-    { href: "#", icon: X },
+    { href:"https://www.facebook.com/rakeshbiswas.biswas.9843/", icon: FaFacebook },
+    { href: "http://wa.me/+8801999647103", icon: FaWhatsapp },
+    { href: "https://t.me/Rakesh01999", icon: FaTelegram },
   ];
 
   return (
@@ -55,6 +57,7 @@ const Footer = () => {
             <Link
               href={href}
               key={index}
+              target="_blank"
               className="text-gray-600 hover:text-blue-500 transition-all"
             >
               <Icon className="w-5 h-5" />

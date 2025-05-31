@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
+import Image from "next/image";
+import logo from "@/assets/logo.png";
 
 // ✅ Zod schema for validating email
 const newsletterSchema = z.object({
@@ -54,13 +56,35 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="w-full py-16 bg-gradient-to-r from-blue-200 via-cyan-200 to-blue-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition">
+    <section className="w-full py-16 bg-gradient-to-r from-blue-200 via-cyan-100 to-blue-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900 dark:text-blue-400">
-          Stay Updated with BasaFinder 🏡
+        {/* <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900 dark:text-blue-400 flex flex-col md:flex-row gap-2">
+          <span>Stay Updated with BasaFinder </span>
+          <span className="inline-flex mx-auto dark:bg-blue-300 rounded-full">
+            <Image
+              src={logo}
+              alt="BasaFinder Logo"
+              width={40}
+              height={32}
+              className="w-8 h-auto sm:w-10 md:w-12"
+            />
+          </span>
+        </h2> */}
+        <h2 className="text-3xl md:text-4xl font-bold mb-2 md:mb-0 text-blue-900 dark:text-blue-400 flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2">
+          <span>Stay Updated with BasaFinder</span>
+          <span className="inline-flex mx-auto dark:bg-blue-300 rounded-full">
+            <Image
+              src={logo}
+              alt="BasaFinder Logo"
+              width={40}
+              height={32}
+              className="w-8 h-auto sm:w-10 md:w-12"
+            />
+          </span>
         </h2>
         <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto">
-          Subscribe to receive the latest rental listings, offers, and updates directly in your inbox!
+          Subscribe to receive the latest rental listings, offers, and updates
+          directly in your inbox!
         </p>
 
         <Card className="max-w-xl mx-auto p-4 shadow-lg bg-white dark:bg-gray-900">

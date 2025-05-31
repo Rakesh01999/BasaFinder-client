@@ -134,42 +134,42 @@ const ListingDetails = ({ listing }: { listing: TRentalListing }) => {
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="md:text-lg text-center text-blue-500">Request Rental</DialogTitle>
+            <DialogTitle className="md:text-lg text-center text-blue-500 dark:text-blue-300">Request Rental</DialogTitle>
           </DialogHeader>
 
           {/* Move-In Date */}
-          <div className="flex items-center gap-2">
-            <CalendarDays className="text-gray-500 w-5 h-5" />
-            <p className="sm:text-xs md:text-lg text-gray-600 ml-2">Move in Date</p>
+          <div className="flex items-center gap-2 ">
+            <CalendarDays className="text-gray-500 w-5 h-5 dark:text-white" />
+            <p className="sm:text-xs md:text-lg text-gray-600 ml-2 dark:text-gray-300">Move in Date</p>
             <Input
               type="date"
               value={moveInDate}
               onChange={(e) => setMoveInDate(e.target.value)}
               // className="w-full"
-              className="w-40"
+              className="w-40 border-blue-300"
             />
           </div>
 
           {/* Rental Duration */}
           <div className="flex items-center gap-2">
-            <Clock className="text-gray-500 w-5 h-5" />
+            <Clock className="text-gray-500 w-5 h-5 dark:text-white" />
             <Input
               type="text"
               placeholder="Enter rental duration (e.g., 6 months)"
               value={rentalDuration}
               onChange={(e) => setRentalDuration(e.target.value)}
-              className="w-full"
+              className="w-full border-blue-300"
             />
           </div>
 
           {/* Special Requirements */}
           <div className="flex items-center gap-2">
-            <FileText className="text-gray-500 w-5 h-5" />
+            <FileText className="text-gray-500 w-5 h-5 dark:text-white" />
             <Textarea
-              placeholder="Special requirements (optional)"
+              placeholder="Enter Special requirements (optional)"
               value={specialRequirements}
               onChange={(e) => setSpecialRequirements(e.target.value)}
-              className="w-full"
+              className="w-full border-blue-300"
             />
           </div>
 

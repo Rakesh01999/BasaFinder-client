@@ -26,7 +26,7 @@ const RentalListings = async () => {
             <ListingCard
               key={idx}
               listing={{
-                id: listing._id, // ✅ Mapping _id to id
+                id: listing._id, // Mapping _id to id
                 location: listing.location,
                 rentAmount: listing.rentAmount,
                 bedrooms: listing.bedrooms,

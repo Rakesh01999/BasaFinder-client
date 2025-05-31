@@ -19,7 +19,7 @@ export default function DashboardLayout({
             <SidebarTrigger className="-ml-1 " />
           </div>
         </header>
-        <div className="p-4 pt-0 min-h-screen">{children}</div>
+          <div className="p-4 pt-0 min-h-screen">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

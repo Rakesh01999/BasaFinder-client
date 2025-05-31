@@ -12,6 +12,7 @@ import { getSingleUser } from "@/services/Users";
 import { createRentalRequest } from "@/services/Requests";
 import { IUser } from "@/types";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const RentalHouseRequest = () => {
   const { user } = useUser();
@@ -85,7 +86,7 @@ const RentalHouseRequest = () => {
     };
 
     console.log("Sending Request Data:", rentalRequest);
-    
+
     try {
       const res = await createRentalRequest(rentalRequest);
       console.log("Response Data res:", res);
@@ -132,7 +133,9 @@ const RentalHouseRequest = () => {
           <Input
             disabled
             value={userData?.phone_number || ""}
-            className={`mt-2 ${!userData?.phone_number ? "border-red-500" : ""}`}
+            className={`mt-2 ${
+              !userData?.phone_number ? "border-red-500" : ""
+            }`}
           />
           {!userData?.phone_number && (
             <p className="text-red-500 text-xs mt-1">
@@ -172,7 +175,11 @@ const RentalHouseRequest = () => {
             <label className="text-sm font-medium text-gray-700">
               Landlord ID
             </label>
-            <Input disabled value={listing?.landlordId || ""} className="mt-2" />
+            <Input
+              disabled
+              value={listing?.landlordId || ""}
+              className="mt-2"
+            />
           </div>
         </div>
 
@@ -182,13 +189,21 @@ const RentalHouseRequest = () => {
             <label className="text-sm font-medium text-gray-700">
               Move-in Date
             </label>
-            <Input disabled value={listing?.moveInDate || ""} className="mt-2" />
+            <Input
+              disabled
+              value={listing?.moveInDate || ""}
+              className="mt-2"
+            />
           </div>
           <div>
             <label className="text-sm font-medium text-gray-700">
               Rental Duration
             </label>
-            <Input disabled value={listing?.rentalDuration || ""} className="mt-2" />
+            <Input
+              disabled
+              value={listing?.rentalDuration || ""}
+              className="mt-2"
+            />
           </div>
         </div>
 
@@ -224,8 +239,13 @@ const RentalHouseRequest = () => {
             checked={agree}
             onCheckedChange={(checked) => setAgree(!!checked)}
           />
-          <span className="text-sm text-gray-600">
-            I agree to the terms and conditions.
+          <span className="text-sm text-gray-600 flex flex-row gap-2">
+            I agree to the
+            <Link href={`/terms-of-use`} passHref className="text-blue-600 underline">
+              {/* <Button className="w-full bg-gradient-to-r from-blue-700 to-cyan-500 text-white rounded-full hover:opacity-90">
+          </Button> */}
+              terms and conditions
+            </Link>
           </span>
         </div>
 

@@ -17,7 +17,7 @@ interface ListingCardProps {
 
 const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
   return (
-    <div className="border rounded-3xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300">
+    <div className="border rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-300 hover:shadow-2xl transition-all duration-300">
       <div className="relative w-full h-56">
         <Image
           src={
@@ -39,26 +39,29 @@ const ListingCard: React.FC<ListingCardProps> = ({ listing }) => {
         <h3 className="text-xl font-semibold text-gray-800">
           {listing.location}
         </h3>
-        <p className="text-gray-500 text-sm mb-3">{listing.description}</p>
+        {/* <p className="text-gray-500 text-sm mb-3">{listing.description}</p> */}
 
         <div className="flex justify-between items-center text-gray-600 mb-4">
-          <span className="text-lg font-bold text-primary">
-            ৳{listing.rentAmount}
+          <span className="text-lg font-bold text-blue-600">
+            ৳ {listing.rentAmount}
           </span>
           <span className="text-sm">{listing.bedrooms} Bedrooms</span>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-4">
-          {listing.amenities.slice(0, 3).map((amenity, idx) => (
+          {listing.amenities.slice(0, 2).map((amenity, idx) => (
             <span
               key={idx}
-              className="text-xs bg-blue-100 text-blue-500 px-2 py-1 rounded-full"
+              className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full"
             >
               {amenity}
             </span>
           ))}
-          {listing.amenities.length > 3 && (
+          {/* {listing.amenities.length > 3 && (
             <span className="text-xs">+ more</span>
+          )} */}
+          {listing.amenities.length > 2 && (
+            <span className="text-xs text-blue-600">+ more</span>
           )}
         </div>
         {/* <Link href='listingId'> */}

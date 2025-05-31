@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 const blogs = [
   {
     id: 1,
-    title: "10 Tips for First-Time Renters",
+    title: "Tips for First-Time Renters",
     image: "https://i.postimg.cc/HsLMcTK4/1726687662933.png",
     summary: "Get prepared with everything you need to know before renting your first apartment.",
     date: "May 20, 2025",
