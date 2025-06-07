@@ -379,7 +379,7 @@ export default function Navbar() {
                 <Button
                   variant="outline"
                   size="default"
-                  className="rounded-2xl text-sm xl:text-base px-6 py-2 xl:px-8 xl:py-3 bg-white/90 hover:bg-white text-gray-700 border-white/40 hover:border-white/60 shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                  className="rounded-2xl text-sm xl:text-base px-6 py-2 xl:px-8 xl:py-3 bg-white/90 hover:bg-white hover:text-black text-gray-700 border-white/40 hover:border-white/60 shadow-md hover:shadow-lg transition-all duration-300 font-medium"
                 >
                   Login
                 </Button>
